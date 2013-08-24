@@ -16,6 +16,8 @@ bool HelloWorld::init()
     {
         return false;
     }
+    
+    CCSize size=CCDirector::sharedDirector()->getWinSize();
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                         "CloseNormal.png",
                                         "CloseSelected.png",
@@ -28,14 +30,22 @@ bool HelloWorld::init()
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
     
-    CCScene* start=StartView::scene();
+    CCScene* start=TopView::scene();
     //CCDirector::sharedDirector()->pushScene(start);
     CCDirector::sharedDirector()->runWithScene(start);
     CCLog("Now is First");
     
-    CCLabelTTF* label=CCLabelTTF::create("First","arial",48);
-    label->setPosition(ccp(100.f,100.f));
+    CCSprite* back=CCSprite::create("StartBackground.jpeg");
+    back->setPosition(ccp(0.f,0.f));
+    this->addChild(back);
+    
+    
+    CCLabelTTF* label=CCLabelTTF::create("タイトル","arial",48);
+    label->setPosition(ccp(size.width/2,size.height/1.5));
     this->addChild(label);
+    CCLabelTTF* startl=CCLabelTTF::create("START","arial",48);
+    startl->setPosition(ccp(size.width/2,size.height/4));
+    this->addChild(startl);
     
     
     

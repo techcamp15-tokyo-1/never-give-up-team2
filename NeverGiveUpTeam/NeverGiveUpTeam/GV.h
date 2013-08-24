@@ -11,6 +11,11 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "StartView.h"
+#include "TopView.h"
+#include "CollectView.h"
+#include "BoxView.h"
+#include "ShopView.h"
+#include "SettingView.h"
 
 using namespace std;
 using namespace cocos2d;

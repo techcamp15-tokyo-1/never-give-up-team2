@@ -1,23 +1,23 @@
 //
-//  StartView.cpp
+//  BoxView.cpp
 //  NeverGiveUpTeam
 //
 //  Created by AKIE SAMU on 2013/08/23.
 //
 //
 
+#include "BoxView.h"
 #include "GV.h"
 
-
-CCScene* StartView::scene()
+CCScene* BoxView::scene()
 {
     CCScene *scene = CCScene::create();
-    StartView *layer = StartView::create();
+    BoxView *layer = BoxView::create();
     scene->addChild(layer);
     return scene;
 }
 
-bool StartView::init()
+bool BoxView::init()
 {
     if ( !CCLayer::init() )
     {
@@ -34,40 +34,29 @@ bool StartView::init()
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
                                                           this,
-                                                          menu_selector(StartView::next) );
+                                                          menu_selector(BoxView::next) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
+       
     
-
-    CCLabelTTF* label1=CCLabelTTF::create("森へ行く","arial",20);
+    CCLabelTTF* label1=CCLabelTTF::create("Box","arial",20);
     label1->setPosition(ccp(size.width/4,size.height/4*3));
     this->addChild(label1);
-    CCLabelTTF* label2=CCLabelTTF::create("ショップへ行く","arial",20);
-    label2->setPosition(ccp(size.width/4*3,size.height/4*3));
-    this->addChild(label2);
-    CCLabelTTF* label3=CCLabelTTF::create("倉庫","arial",20);
-    label3->setPosition(ccp(size.width/4,size.height/3));
-    this->addChild(label3);
-    CCLabelTTF* label4=CCLabelTTF::create("図鑑","arial",20);
-    label4->setPosition(ccp(size.width/4*3,size.height/3));
-    this->addChild(label4);
 
-
-    
     
     return true;
 }
 
-void StartView::next(){
-    CCScene* next=TopView::scene();
+void BoxView::next(){
+    CCScene* next=ShopView::scene();
     CCDirector::sharedDirector()->replaceScene(next);
 }
 
-void StartView::menuCloseCallback(CCObject* pSender)
+void BoxView::menuCloseCallback(CCObject* pSender)
 {
     CCDirector::sharedDirector()->end();
     

@@ -284,6 +284,11 @@
 		E16D374317C73266008F16E8 /* Babuto.png in Resources */ = {isa = PBXBuildFile; fileRef = E16D374017C73266008F16E8 /* Babuto.png */; };
 		E16D374417C73266008F16E8 /* Herakuresu.png in Resources */ = {isa = PBXBuildFile; fileRef = E16D374117C73266008F16E8 /* Herakuresu.png */; };
 		E16D374817C739B5008F16E8 /* StartView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D374717C739B5008F16E8 /* StartView.cpp */; };
+		E16D374B17C75E10008F16E8 /* TopView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D374A17C75E10008F16E8 /* TopView.cpp */; };
+		E16D374E17C763E0008F16E8 /* CollectView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D374D17C763E0008F16E8 /* CollectView.cpp */; };
+		E16D375117C7643D008F16E8 /* BoxView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D375017C7643D008F16E8 /* BoxView.cpp */; };
+		E16D375417C76469008F16E8 /* ShopView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D375317C76468008F16E8 /* ShopView.cpp */; };
+		E16D375717C76483008F16E8 /* SettingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D375617C76482008F16E8 /* SettingView.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -883,6 +888,16 @@
 		E16D374517C7346D008F16E8 /* GV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GV.h; sourceTree = "<group>"; };
 		E16D374617C73993008F16E8 /* StartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartView.h; sourceTree = "<group>"; };
 		E16D374717C739B5008F16E8 /* StartView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartView.cpp; sourceTree = "<group>"; };
+		E16D374917C75E00008F16E8 /* TopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		E16D374A17C75E10008F16E8 /* TopView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TopView.cpp; sourceTree = "<group>"; };
+		E16D374C17C763D2008F16E8 /* CollectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectView.h; sourceTree = "<group>"; };
+		E16D374D17C763E0008F16E8 /* CollectView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollectView.cpp; sourceTree = "<group>"; };
+		E16D374F17C7642D008F16E8 /* BoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
+		E16D375017C7643D008F16E8 /* BoxView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxView.cpp; sourceTree = "<group>"; };
+		E16D375217C7645D008F16E8 /* ShopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopView.h; sourceTree = "<group>"; };
+		E16D375317C76468008F16E8 /* ShopView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopView.cpp; sourceTree = "<group>"; };
+		E16D375517C76476008F16E8 /* SettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		E16D375617C76482008F16E8 /* SettingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingView.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2113,6 +2128,16 @@
 				E16D374517C7346D008F16E8 /* GV.h */,
 				E16D374617C73993008F16E8 /* StartView.h */,
 				E16D374717C739B5008F16E8 /* StartView.cpp */,
+				E16D374917C75E00008F16E8 /* TopView.h */,
+				E16D374A17C75E10008F16E8 /* TopView.cpp */,
+				E16D374C17C763D2008F16E8 /* CollectView.h */,
+				E16D374D17C763E0008F16E8 /* CollectView.cpp */,
+				E16D374F17C7642D008F16E8 /* BoxView.h */,
+				E16D375017C7643D008F16E8 /* BoxView.cpp */,
+				E16D375217C7645D008F16E8 /* ShopView.h */,
+				E16D375317C76468008F16E8 /* ShopView.cpp */,
+				E16D375517C76476008F16E8 /* SettingView.h */,
+				E16D375617C76482008F16E8 /* SettingView.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2443,6 +2468,11 @@
 				E16D372617C730A4008F16E8 /* AppDelegate.cpp in Sources */,
 				E16D372917C730A4008F16E8 /* HelloWorldScene.cpp in Sources */,
 				E16D374817C739B5008F16E8 /* StartView.cpp in Sources */,
+				E16D374B17C75E10008F16E8 /* TopView.cpp in Sources */,
+				E16D374E17C763E0008F16E8 /* CollectView.cpp in Sources */,
+				E16D375117C7643D008F16E8 /* BoxView.cpp in Sources */,
+				E16D375417C76469008F16E8 /* ShopView.cpp in Sources */,
+				E16D375717C76483008F16E8 /* SettingView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

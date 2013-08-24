@@ -1,5 +1,6 @@
 //
-//  StartView.cpp
+//
+
 //  NeverGiveUpTeam
 //
 //  Created by AKIE SAMU on 2013/08/23.
@@ -9,32 +10,33 @@
 #include "GV.h"
 
 
-CCScene* StartView::scene()
+
+CCScene* TopView::scene()
 {
     CCScene *scene = CCScene::create();
-    StartView *layer = StartView::create();
+    TopView *layer = TopView::create();
     scene->addChild(layer);
     return scene;
 }
 
-bool StartView::init()
+bool TopView::init()
 {
     if ( !CCLayer::init() )
     {
         return false;
     }
     
-    CCSize size=CCDirector::sharedDirector()->getWinSize();
+    //    CCSize backSize=CCDirector::sharedDirector()->getWinSize();
     CCSprite* back=CCSprite::create("Background.jpeg");
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
-    CCLog("Now is SecondScene");
+    CCLog("Now is TopScene");
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
                                                           this,
-                                                          menu_selector(StartView::next) );
+                                                          menu_selector(TopView::next) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
     
     // create menu, it's an autorelease object
@@ -42,32 +44,21 @@ bool StartView::init()
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
     
-
-    CCLabelTTF* label1=CCLabelTTF::create("森へ行く","arial",20);
-    label1->setPosition(ccp(size.width/4,size.height/4*3));
-    this->addChild(label1);
-    CCLabelTTF* label2=CCLabelTTF::create("ショップへ行く","arial",20);
-    label2->setPosition(ccp(size.width/4*3,size.height/4*3));
-    this->addChild(label2);
-    CCLabelTTF* label3=CCLabelTTF::create("倉庫","arial",20);
-    label3->setPosition(ccp(size.width/4,size.height/3));
-    this->addChild(label3);
-    CCLabelTTF* label4=CCLabelTTF::create("図鑑","arial",20);
-    label4->setPosition(ccp(size.width/4*3,size.height/3));
-    this->addChild(label4);
-
-
+    CCLabelTTF* label=CCLabelTTF::create("Top","arial",48);
+    label->setPosition(ccp(100.f,100.f));
+    this->addChild(label);
+    
     
     
     return true;
 }
 
-void StartView::next(){
-    CCScene* next=TopView::scene();
+void TopView::next(){
+    CCScene* next=CollectView::scene();
     CCDirector::sharedDirector()->replaceScene(next);
 }
 
-void StartView::menuCloseCallback(CCObject* pSender)
+void TopView::menuCloseCallback(CCObject* pSender)
 {
     CCDirector::sharedDirector()->end();
     
