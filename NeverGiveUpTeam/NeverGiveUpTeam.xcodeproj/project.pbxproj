@@ -289,6 +289,14 @@
 		E16D375117C7643D008F16E8 /* BoxView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D375017C7643D008F16E8 /* BoxView.cpp */; };
 		E16D375417C76469008F16E8 /* ShopView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D375317C76468008F16E8 /* ShopView.cpp */; };
 		E16D375717C76483008F16E8 /* SettingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16D375617C76482008F16E8 /* SettingView.cpp */; };
+		E16D376017C8E2BD008F16E8 /* beshi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375817C8E2B6008F16E8 /* beshi.mp3 */; };
+		E16D376117C8E2BD008F16E8 /* bon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375917C8E2B7008F16E8 /* bon.mp3 */; };
+		E16D376217C8E2BD008F16E8 /* growup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375A17C8E2B7008F16E8 /* growup.mp3 */; };
+		E16D376317C8E2BD008F16E8 /* hummer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375B17C8E2B8008F16E8 /* hummer.mp3 */; };
+		E16D376417C8E2BD008F16E8 /* keri.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375C17C8E2B9008F16E8 /* keri.mp3 */; };
+		E16D376517C8E2BD008F16E8 /* shop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375D17C8E2BA008F16E8 /* shop.mp3 */; };
+		E16D376617C8E2BD008F16E8 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375E17C8E2BB008F16E8 /* start.mp3 */; };
+		E16D376717C8E2BD008F16E8 /* top.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E16D375F17C8E2BB008F16E8 /* top.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -898,6 +906,14 @@
 		E16D375317C76468008F16E8 /* ShopView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopView.cpp; sourceTree = "<group>"; };
 		E16D375517C76476008F16E8 /* SettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
 		E16D375617C76482008F16E8 /* SettingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingView.cpp; sourceTree = "<group>"; };
+		E16D375817C8E2B6008F16E8 /* beshi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beshi.mp3; sourceTree = "<group>"; };
+		E16D375917C8E2B7008F16E8 /* bon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bon.mp3; sourceTree = "<group>"; };
+		E16D375A17C8E2B7008F16E8 /* growup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = growup.mp3; sourceTree = "<group>"; };
+		E16D375B17C8E2B8008F16E8 /* hummer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hummer.mp3; sourceTree = "<group>"; };
+		E16D375C17C8E2B9008F16E8 /* keri.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = keri.mp3; sourceTree = "<group>"; };
+		E16D375D17C8E2BA008F16E8 /* shop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shop.mp3; sourceTree = "<group>"; };
+		E16D375E17C8E2BB008F16E8 /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		E16D375F17C8E2BB008F16E8 /* top.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = top.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -969,6 +985,14 @@
 		E16D339317C7309F008F16E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E16D375817C8E2B6008F16E8 /* beshi.mp3 */,
+				E16D375917C8E2B7008F16E8 /* bon.mp3 */,
+				E16D375A17C8E2B7008F16E8 /* growup.mp3 */,
+				E16D375B17C8E2B8008F16E8 /* hummer.mp3 */,
+				E16D375C17C8E2B9008F16E8 /* keri.mp3 */,
+				E16D375D17C8E2BA008F16E8 /* shop.mp3 */,
+				E16D375E17C8E2BB008F16E8 /* start.mp3 */,
+				E16D375F17C8E2BB008F16E8 /* top.mp3 */,
 				E16D373F17C73266008F16E8 /* Atras.png */,
 				E16D374017C73266008F16E8 /* Babuto.png */,
 				E16D374117C73266008F16E8 /* Herakuresu.png */,
@@ -2208,6 +2232,14 @@
 				E16D374217C73266008F16E8 /* Atras.png in Resources */,
 				E16D374317C73266008F16E8 /* Babuto.png in Resources */,
 				E16D374417C73266008F16E8 /* Herakuresu.png in Resources */,
+				E16D376017C8E2BD008F16E8 /* beshi.mp3 in Resources */,
+				E16D376117C8E2BD008F16E8 /* bon.mp3 in Resources */,
+				E16D376217C8E2BD008F16E8 /* growup.mp3 in Resources */,
+				E16D376317C8E2BD008F16E8 /* hummer.mp3 in Resources */,
+				E16D376417C8E2BD008F16E8 /* keri.mp3 in Resources */,
+				E16D376517C8E2BD008F16E8 /* shop.mp3 in Resources */,
+				E16D376617C8E2BD008F16E8 /* start.mp3 in Resources */,
+				E16D376717C8E2BD008F16E8 /* top.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2614,6 +2646,7 @@
 				E16D372E17C730A4008F16E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

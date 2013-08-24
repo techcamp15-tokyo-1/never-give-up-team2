@@ -40,6 +40,10 @@ public:
     @param  the pointer of the application instance
     */
     virtual void applicationWillEnterForeground();
+    
+    bool getBGM();
+    bool getSE();
+    
 };
 
 #endif // _APP_DELEGATE_H_

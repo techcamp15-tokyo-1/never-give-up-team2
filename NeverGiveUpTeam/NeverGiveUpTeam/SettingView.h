@@ -17,7 +17,18 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void next();
+    void BGM_Mute();
+    void SE_Mute();
+    void BGM_On();
+    void SE_On();
+    void GoToTitle();
+    void Exit();
+    void setSetting(bool bgm,bool se);
+    
     CREATE_FUNC(SettingView);
+    
+private:
+    bool BGM,SE;
 };
 
 

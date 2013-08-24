@@ -29,7 +29,6 @@ bool SettingView::init()
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
-    CCLog("Now is SecondScene");
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
@@ -53,8 +52,50 @@ bool SettingView::init()
 
 void SettingView::next(){
     CCScene* next=TopView::scene();
-    CCDirector::sharedDirector()->replaceScene(next);
+    float duration=0.5f;
+    CCScene* pScene=CCTransitionFade::create(duration,next);
+    if(pScene){
+        CCDirector::sharedDirector()->replaceScene(pScene);
+    }
+    
+
 }
+
+void SettingView::BGM_Mute(){
+    SettingView::BGM=false;
+}
+void SettingView::SE_Mute(){
+    SettingView::SE=false;
+}
+
+void SettingView::BGM_On(){
+    SettingView::BGM=true;
+}
+void SettingView::SE_On(){
+    SettingView::SE=true;
+}
+
+void SettingView::setSetting(bool bgm, bool se){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    user->setBoolForKey("BGM_KEY",bgm);
+    user->setBoolForKey("SE_KEY",bgm);
+    user->flush();
+    
+}
+
+void SettingView::Exit(){
+    CCDirector::sharedDirector()->end();
+}
+
+void SettingView::GoToTitle(){
+    CCScene* next=HelloWorld::scene();
+    float duration=0.5f;
+    CCScene* pScene=CCTransitionCrossFade::create(duration,next);
+    if(pScene){
+        CCDirector::sharedDirector()->replaceScene(pScene);
+    }
+}
+
 
 void SettingView::menuCloseCallback(CCObject* pSender)
 {

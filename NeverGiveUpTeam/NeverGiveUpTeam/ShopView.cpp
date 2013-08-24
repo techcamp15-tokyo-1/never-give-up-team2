@@ -9,6 +9,10 @@
 #include "ShopView.h"
 #include "GV.h"
 
+ShopView::ShopView(){
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
+    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("shop.mp3");
+}
 CCScene* ShopView::scene()
 {
     CCScene *scene = CCScene::create();
@@ -24,12 +28,14 @@ bool ShopView::init()
         return false;
     }
     
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("top.mp3",true);
+
+    
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     CCSprite* back=CCSprite::create("Background.jpeg");
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
-    CCLog("Now is SecondScene");
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
@@ -48,13 +54,18 @@ bool ShopView::init()
     CCLabelTTF* label1=CCLabelTTF::create("Shop","arial",20);
     label1->setPosition(ccp(size.width/4,size.height/4*3));
     this->addChild(label1);
-
+    
+                                                           
     return true;
 }
 
 void ShopView::next(){
     CCScene* next=SettingView::scene();
-    CCDirector::sharedDirector()->replaceScene(next);
+    float duration=0.5f;
+    CCScene* pScene=CCTransitionFade::create(duration,next);
+    if(pScene){
+        CCDirector::sharedDirector()->replaceScene(pScene);
+    }
 }
 
 void ShopView::menuCloseCallback(CCObject* pSender)

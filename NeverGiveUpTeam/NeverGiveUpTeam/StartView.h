@@ -12,10 +12,12 @@
 class StartView : public cocos2d::CCLayer
 {
 public:
+    StartView();
     virtual bool init();
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
-    void next();
+    void next(const int s);
+    void ccTouchesBegan(CCSet* touches,CCEvent* event);
     CREATE_FUNC(StartView);
 };
 

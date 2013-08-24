@@ -29,7 +29,6 @@ bool CollectView::init()
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
-    CCLog("Now is SecondScene");
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
@@ -54,7 +53,12 @@ bool CollectView::init()
 
 void CollectView::next(){
     CCScene* next=BoxView::scene();
-    CCDirector::sharedDirector()->replaceScene(next);
+    float duration=0.5f;
+    CCScene* pScene=CCTransitionFade::create(duration,next);
+    if(pScene){
+        CCDirector::sharedDirector()->replaceScene(pScene);
+    }
+
 }
 
 void CollectView::menuCloseCallback(CCObject* pSender)

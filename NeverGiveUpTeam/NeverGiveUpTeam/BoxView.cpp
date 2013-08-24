@@ -29,7 +29,6 @@ bool BoxView::init()
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
-    CCLog("Now is SecondScene");
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
@@ -53,7 +52,12 @@ bool BoxView::init()
 
 void BoxView::next(){
     CCScene* next=ShopView::scene();
-    CCDirector::sharedDirector()->replaceScene(next);
+    float duration=0.5f;
+    CCScene* pScene=CCTransitionFade::create(duration,next);
+    if(pScene){
+        CCDirector::sharedDirector()->replaceScene(pScene);
+    }
+
 }
 
 void BoxView::menuCloseCallback(CCObject* pSender)
