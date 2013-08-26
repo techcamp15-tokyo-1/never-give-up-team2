@@ -17,13 +17,16 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void next();
-    void BGM_Mute();
-    void SE_Mute();
+    void BGM_Off();
+    void SE_Off();
     void BGM_On();
     void SE_On();
     void GoToTitle();
     void Exit();
     void setSetting(bool bgm,bool se);
+    void switchCallBack();
+    bool getBGM();
+    bool getSE();
     
     CREATE_FUNC(SettingView);
     

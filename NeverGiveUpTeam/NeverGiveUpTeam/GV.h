@@ -18,6 +18,12 @@
 #include "BoxView.h"
 #include "ShopView.h"
 #include "SettingView.h"
+#include "cocos-ext.h"
+#include "XTLayer.h"
+#include "TapSprite.h"
+
+//名前空間指定マクロ
+USING_NS_CC_EXT;
 
 //名前空間
 using namespace std;
@@ -29,11 +35,16 @@ using namespace CocosDenshion;
 #define WidthSize 320
 #define HeightSize 480
 #define MAX_BOX_NUM 30
+#define MAX_COLLECT 30
 #define BOX_NUM 5
 #define MAX_MONEY 999999
 #define MAX_POWER 999
 #define MAX_LEVEL 100
 #define MAX_STAMINA 100
+
+
+
+
 
 
 

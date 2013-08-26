@@ -3,7 +3,7 @@
 
 #include "GV.h"
 
-class HelloWorld : public cocos2d::CCLayer
+class HelloWorld :public cocos2d::CCLayer
 {
 public:
     HelloWorld();
@@ -11,6 +11,12 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void callback();
+    void ccTouchesBegan(CCSet* touches,CCEvent* event);
+    void setStatus();
+    static string getPower();
+    static string getStamina();
+    static string getMoney();
+    
   
     CREATE_FUNC(HelloWorld);
   

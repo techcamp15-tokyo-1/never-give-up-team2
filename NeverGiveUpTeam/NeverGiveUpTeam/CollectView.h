@@ -16,6 +16,7 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void next();
+    void setImage();
     CREATE_FUNC(CollectView);
 };
 

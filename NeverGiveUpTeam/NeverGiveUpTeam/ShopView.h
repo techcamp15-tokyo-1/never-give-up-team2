@@ -19,6 +19,8 @@ public:
     void menuCloseCallback(CCObject* pSender);
     void next();
     bool Buy(const int Price);
+    bool Buy_Cancel();
+    void Save(const int money);
     
     
     CREATE_FUNC(ShopView);

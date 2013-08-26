@@ -43,11 +43,32 @@ bool SettingView::init()
     CCLabelTTF* label1=CCLabelTTF::create("Setting","arial",20);
     label1->setPosition(ccp(size.width/4,size.height/4*3));
     this->addChild(label1);
-
-       
     
+    CCParticleRain* rain=CCParticleRain::createWithTotalParticles(5000);
+    this->addChild(rain);
     
+    //BGMスイッチ
+    CCSprite* maskSprite=CCSprite::create("switch-mask.png");
+    CCSprite* onSprite=CCSprite::create("switch-on.png");
+    CCSprite* offSprite=CCSprite::create("switch-off.png");
+    CCSprite* thumbSprite=CCSprite::create("switch-thumb.png");
+    
+    CCLabelTTF* onl=CCLabelTTF::create("On","Arial-BoldMT",16);
+    CCLabelTTF* offl=CCLabelTTF::create("Off","Arial-BoldMT",16);
+   // CCControlSwitch* pSwitch=CCControlSwitch::create(maskSprite,onSprite,offSprite,thumbSprite,onl,offl);
+   // pSwitch->setPosition(ccp(size.width/2,size.height/2));
+    //this->addChild(pSwitch);
+    //pSwitch->addTargetWithActionForControlEvents(this,cccontrol_selector(SettingView::switchCallBack),CCControlEventValueChanged);
+    
+    CCSprite* setting=CCSprite::create("setting.png");
+    setting->setPosition(ccp(size.width/2,size.height/4*3));
+    setting->setScale(0.5f);
+    this->addChild(setting);
     return true;
+}
+
+void SettingView::switchCallBack(){
+    
 }
 
 void SettingView::next(){
@@ -61,10 +82,10 @@ void SettingView::next(){
 
 }
 
-void SettingView::BGM_Mute(){
+void SettingView::BGM_Off(){
     SettingView::BGM=false;
 }
-void SettingView::SE_Mute(){
+void SettingView::SE_Off(){
     SettingView::SE=false;
 }
 
@@ -78,9 +99,20 @@ void SettingView::SE_On(){
 void SettingView::setSetting(bool bgm, bool se){
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
     user->setBoolForKey("BGM_KEY",bgm);
-    user->setBoolForKey("SE_KEY",bgm);
+    user->setBoolForKey("SE_KEY",se);
     user->flush();
-    
+}
+
+bool SettingView::getBGM(){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    bool b=user->getBoolForKey("BGM_KEY",true);
+    return b;
+}
+
+bool SettingView::getSE(){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    bool s=user->getBoolForKey("SE_KEY",true);
+    return s;
 }
 
 void SettingView::Exit(){

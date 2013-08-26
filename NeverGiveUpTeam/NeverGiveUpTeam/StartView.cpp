@@ -29,7 +29,7 @@ bool StartView::init()
     this->setTouchEnabled(true);
     
     CCSize size=CCDirector::sharedDirector()->getWinSize();
-    CCSprite* back=CCSprite::create("Background.jpeg");
+    CCSprite* back=CCSprite::create("colk.png");
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
@@ -74,9 +74,60 @@ bool StartView::init()
     addChild(node2);
     
     
-
-
     
+   CCSprite* m1=CCSprite::create("Forest.png");
+    CCSprite* m2=CCSprite::create("Shop.png");
+    CCSprite* m3=CCSprite::create("Box.png");
+    CCSprite* m4=CCSprite::create("Zukan.png");
+    
+   
+    
+    
+    
+    m1->setPosition(ccp(size.width/4,size.height/4*3));
+    m2->setPosition(ccp(size.width/4*3,size.height/4*3));
+    m3->setPosition(ccp(size.width/4,size.height/4));
+    m4->setPosition(ccp(size.width/4*3,size.height/4));
+    m1->setScale(0.75f);
+    m2->setScale(0.75f);
+    m3->setScale(0.75f);
+    m4->setScale(0.75f);
+    this->addChild(m1);
+    this->addChild(m2);
+    this->addChild(m3);
+    this->addChild(m4);
+    
+    
+    CCDrawNode *ste=CCDrawNode::create();
+    ste->drawSegment(ccp(0,visibleSize.height/10*9),ccp(visibleSize.width,visibleSize.height/10*9),1,ccc4FFromccc3B(ccBLUE));
+    addChild(ste);
+    
+    
+    CCSprite* state=CCSprite::create("state.png");//ステータスバー
+    state->setScaleX(size.width/state->getContentSize().width);
+    state->setScaleY(state->getContentSize().height/size.height/10*8);//0.35f
+    state->setPosition(ccp(size.width/2,size.height-(state->getContentSize().height/6)));
+    this->addChild(state);
+    
+    //ステータスに表示
+    CCLabelTTF* power=CCLabelTTF::create(HelloWorld::getPower().c_str(),"Thonburi",20);
+    CCLabelTTF* stamina=CCLabelTTF::create(HelloWorld::getStamina().c_str(),"Thonburi",20);
+    CCLabelTTF* money=CCLabelTTF::create(HelloWorld::getMoney().c_str(),"Thonburi",20);
+    power->setPosition(ccp(size.width/5*4,size.height/40*39));
+    stamina->setPosition(ccp(size.width/5*4,size.height/40*37.5));
+    money->setPosition(ccp(size.width/5*4,size.height/40*36));
+    ccColor3B sc=power->getColor();
+    sc.r=0;
+    sc.g=0;
+    sc.b=0;
+    power->setColor(sc);
+    stamina->setColor(sc);
+    money->setColor(sc);
+    this->addChild(power);
+    this->addChild((stamina));
+    this->addChild((money));
+    //ここまで
+
     
     return true;
 }
@@ -84,8 +135,9 @@ bool StartView::init()
 void StartView::next(const int s){
      float duration=0.5f;
     if(s==1){
+        duration =1.0;
             CCScene* next=BoxView::scene();
-            CCScene* pScene=CCTransitionFade::create(duration,next);
+            CCScene* pScene=CCTransitionPageTurn::create(duration,next,true);
             if(pScene){
                 CCDirector::sharedDirector()->replaceScene(pScene);
             }
@@ -122,7 +174,7 @@ void StartView::ccTouchesBegan(CCSet* touches,CCEvent* enevet){
         CCLog("next2");//Mori
     }else if(location.x>=size.width/2 && location.y>=size.height/2){
         next(3);
-        CCLog("next3");//Setting
+        CCLog("next3");//Collect
     }else if(location.x>=size.width/2 && location.y<=size.height/2){
         next(4);
         CCLog("next4");//Shop
