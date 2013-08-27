@@ -89,7 +89,7 @@ bool ShopView::init()
 }
 
 void ShopView::next(){
-    CCScene* next=SettingView::scene();
+    CCScene* next=StartView::scene();
     float duration=0.5f;
     CCScene* pScene=CCTransitionFade::create(duration,next);
     if(pScene){

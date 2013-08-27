@@ -16,6 +16,8 @@ CCScene* TopView::scene()
     CCScene *scene = CCScene::create();
     TopView *layer = TopView::create();
     scene->addChild(layer);
+    SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+    SimpleAudioEngine::sharedEngine()->preloadEffect("keri.mp3");
     return scene;
 }
 
@@ -27,7 +29,7 @@ bool TopView::init()
     }
     
     //    CCSize backSize=CCDirector::sharedDirector()->getWinSize();
-    CCSprite* back=CCSprite::create("colk.png");
+    CCSprite* back=CCSprite::create("MainBackgroundFall.png");
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
@@ -77,16 +79,35 @@ bool TopView::init()
     //stamina=
     //money=
     
-  /*  CCSprite* tree =CCSprite::create("kunugi1.png");
-    CCSprite* foot=CCSprite::create("FootStart.png");
+    CCSprite* tree =CCSprite::create("kunugi1.png");//Picture of Tree
+    CCSprite* foot=CCSprite::create("FootStart.png");//Picture of foot
     tree->setScale(0.4f);
     foot->setScale(0.125f);
     tree->setPosition(ccp(size.width/2,size.height/2));
-    foot->setPosition(ccp(size.width/3*2,size.height/3));
+    foot->setPosition(ccp(size.width,size.height/3));
     this->addChild(tree);
-    this->addChild(foot);*/
-
+    this->addChild(foot);
     
+    //Action
+    CCActionInterval* action1=CCMoveTo::create(0.7,ccp(size.width/3,size.height/3));
+    CCActionInterval* action2=CCRepeatForever::create(action1);
+    foot->runAction(action2);
+    
+    CCActionInterval* action3=CCJumpBy::create(0.7,ccp(0,0),10,1);
+    CCActionInterval* action4=CCRepeatForever::create(action3);
+    tree->runAction(action4);
+    
+    SimpleAudioEngine::sharedEngine()->playEffect("keri.mp3");
+    SimpleAudioEngine::sharedEngine()->playEffect("keri.mp3");
+        SimpleAudioEngine::sharedEngine()->playEffect("keri.mp3");
+        SimpleAudioEngine::sharedEngine()->playEffect("keri.mp3");
+        SimpleAudioEngine::sharedEngine()->playEffect("keri.mp3");
+        SimpleAudioEngine::sharedEngine()->playEffect("keri.mp3");
+    
+    
+    CCLabelTTF* test=CCLabelTTF::create("完全にテストです","arial",38);
+    test->setPosition(ccp(size.width/2,size.height/3*2));
+    this->addChild(test);
     
     
     
@@ -94,7 +115,7 @@ bool TopView::init()
 }
 
 void TopView::next(){
-    CCScene* next=CollectView::scene();
+    CCScene* next=StartView::scene();
     float duration=0.5f;
     CCScene* pScene=CCTransitionFade::create(duration,next);
     if(pScene){

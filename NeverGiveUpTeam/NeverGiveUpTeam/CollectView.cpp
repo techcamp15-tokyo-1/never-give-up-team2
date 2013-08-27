@@ -28,7 +28,7 @@ bool CollectView::init()
     }
     
     CCSize size=CCDirector::sharedDirector()->getWinSize();
-    CCSprite* back=CCSprite::create("Background.jpeg");
+    CCSprite* back=CCSprite::create("ZBG.png");
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
@@ -45,11 +45,7 @@ bool CollectView::init()
     this->addChild(pMenu, 1);
     
     
-    CCLabelTTF* label1=CCLabelTTF::create("ステータスバー","arial",50);
-    label1->setPosition(ccp(size.width/2,size.height/10*9));
-    this->addChild(label1);
-    
-    setImage();
+      setImage();
     
     CCSprite* state=CCSprite::create("state.png");//ステータスバー
     state->setScaleX(size.width/state->getContentSize().width);
@@ -116,7 +112,7 @@ void CollectView::setImage(){
 }
 
 void CollectView::next(){
-    CCScene* next=BoxView::scene();
+    CCScene* next=StartView::scene();
     float duration=0.5f;
     CCScene* pScene=CCTransitionFade::create(duration,next);
     if(pScene){

@@ -76,6 +76,8 @@ bool BoxView::init()
     this->addChild((stamina));
     this->addChild((money));
     //ここまで
+    
+    setImage();
 
     
     
@@ -99,7 +101,7 @@ void BoxView::xtSwipeGesture(XTTouchDirection direction, float distance, float s
 */
 
 void BoxView::next(){
-    CCScene* next=ShopView::scene();
+    CCScene* next=StartView::scene();
     float duration=0.5f;
     CCScene* pScene=CCTransitionFade::create(duration,next);
     if(pScene){
@@ -126,6 +128,41 @@ void BoxView::sell(const int Price){
     user->flush();
     CCLog("after sell %d",money);
 }
+
+void BoxView::setImage(){
+    CCSprite* collect[MAX_COLLECT];
+    CCSize size=CCDirector::sharedDirector()->getWinSize();
+    float x=size.width/8,y=size.height-size.height/5;
+    for(int i=0;i<MAX_COLLECT;i++){
+        collect[i]=CCSprite::create("Peach.png");
+        
+        collect[i]->setPosition(ccp(x,y));
+        collect[i]->setScale(0.25f);
+        this->addChild(collect[i]);
+        
+        string str="Item";
+        ostringstream ostring;//stream 宣言
+        ostring<<(i+1);//iをstreamに代入
+        string num=ostring.str();//int to string
+        str+=num;//連結
+        
+        CCLabelTTF* label=CCLabelTTF::create(str.c_str(),"arial",20);
+        label->setPosition(ccp(x,y-size.height/10));
+        this->addChild(label);
+        
+        if(++x>size.width){
+            x=(size.width/8);
+            y-=(size.height/4);
+        }
+        else{
+            x+=(size.width/4);
+            
+        }
+        
+        
+    }
+}
+
 
 
 /*

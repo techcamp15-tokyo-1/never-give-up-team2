@@ -9,7 +9,7 @@
 #ifndef NeverGiveUpTeam_TapSprite_h
 #define NeverGiveUpTeam_TapSprite_h
 
-#include "GV.h";
+#include "GV.h"
 
 class TapSprite:public CCSprite,public CCTargetedTouchDelegate{
 public:

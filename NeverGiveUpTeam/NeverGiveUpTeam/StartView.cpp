@@ -37,71 +37,13 @@ bool StartView::init()
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
                                                           this,
-                                                          menu_selector(StartView::next) );
+                                                          menu_selector(StartView::menuCloseCallback));
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
-    
-
-    CCLabelTTF* label1=CCLabelTTF::create("森へ行く","arial",20);
-    label1->setPosition(ccp(size.width/4,size.height/4*3));
-    label1->setColor(ccc3(0,0,0));
-    this->addChild(label1);
-    CCLabelTTF* label2=CCLabelTTF::create("ショップへ行く","arial",20);
-    label2->setPosition(ccp(size.width/4*3,size.height/4*3));
-    label2->setColor(ccc3(0,0,0));
-    this->addChild(label2);
-    CCLabelTTF* label3=CCLabelTTF::create("倉庫","arial",20);
-    label3->setPosition(ccp(size.width/4,size.height/3));
-    label3->setColor(ccc3(0,0,0));
-    this->addChild(label3);
-    CCLabelTTF* label4=CCLabelTTF::create("図鑑","arial",20);
-    label4->setPosition(ccp(size.width/4*3,size.height/3));
-    label4->setColor(ccc3(0,0,0));
-    this->addChild(label4);
-    
-    CCSize visibleSize=CCDirector::sharedDirector()->getVisibleSize();
-    
-    CCDrawNode *node=CCDrawNode::create();
-    node->drawSegment(ccp(visibleSize.width/2,0),ccp(visibleSize.width/2,visibleSize.height),1,ccc4FFromccc3B(ccBLUE));
-    addChild(node);
-    
-    CCDrawNode *node2=CCDrawNode::create();
-    node2->drawSegment(ccp(0,visibleSize.height/2),ccp(visibleSize.width,visibleSize.height/2),1,ccc4FFromccc3B(ccBLUE));
-    addChild(node2);
-    
-    
-    
-   CCSprite* m1=CCSprite::create("Forest.png");
-    CCSprite* m2=CCSprite::create("Shop.png");
-    CCSprite* m3=CCSprite::create("Box.png");
-    CCSprite* m4=CCSprite::create("Zukan.png");
-    
-   
-    
-    
-    
-    m1->setPosition(ccp(size.width/4,size.height/4*3));
-    m2->setPosition(ccp(size.width/4*3,size.height/4*3));
-    m3->setPosition(ccp(size.width/4,size.height/4));
-    m4->setPosition(ccp(size.width/4*3,size.height/4));
-    m1->setScale(0.75f);
-    m2->setScale(0.75f);
-    m3->setScale(0.75f);
-    m4->setScale(0.75f);
-    this->addChild(m1);
-    this->addChild(m2);
-    this->addChild(m3);
-    this->addChild(m4);
-    
-    
-    CCDrawNode *ste=CCDrawNode::create();
-    ste->drawSegment(ccp(0,visibleSize.height/10*9),ccp(visibleSize.width,visibleSize.height/10*9),1,ccc4FFromccc3B(ccBLUE));
-    addChild(ste);
-    
     
     CCSprite* state=CCSprite::create("state.png");//ステータスバー
     state->setScaleX(size.width/state->getContentSize().width);
@@ -126,8 +68,75 @@ bool StartView::init()
     this->addChild(power);
     this->addChild((stamina));
     this->addChild((money));
-    //ここまで
+  /*
+    CCSprite* plevel1=CCSprite::create("B.png");
+    CCSprite* plevel2=CCSprite::create("Y.png");
+    CCSprite* plevel3=CCSprite::create("R.png");
+    CCSprite* slevel1=CCSprite::create("B.png");
+    CCSprite* slevel2=CCSprite::create("Y.png");
+    CCSprite* slevel3=CCSprite::create("R.png");
+    plevel1->setScale(0.35f);
+    plevel2->setScale(0.35f);
+    
+    plevel1->setPosition(ccp(size.width/2,size.height/40*37.5));
+    this->addChild(plevel1);
+    plevel2->setPosition(ccp(size.width/2+plevel1->getContentSize().width/2,size.height/40*37.5));
+    this->addChild(plevel2);
+//    plevel1->setPosition(ccp(size.width/2,size.height/40*37.5));
+  //  this->addChild(plevel1);
 
+    //ここまで
+   */
+
+    
+    
+    
+    CCSprite* m1=CCSprite::create("Forest.png");
+    CCSprite* m2=CCSprite::create("Shop.png");
+    CCSprite* m3=CCSprite::create("Box.png");
+    CCSprite* m4=CCSprite::create("Zukan.png");
+    
+    float max=size.height-(state->getContentSize().height);
+    float max2=m1->getPositionX()-m1->getContentSize().height/2;
+    
+    m1->setPosition(ccp(size.width/4,max+state->getContentSize().height/7));
+    m2->setPosition(ccp(size.width/4*3,max+state->getContentSize().height/7));
+    m3->setPosition(ccp(size.width/4,max2+m1->getContentSize().height));
+    m4->setPosition(ccp(size.width/4*3,max2+m1->getContentSize().height));
+    m1->setScaleX(0.75f);
+    m2->setScaleX(0.75f);
+    m3->setScaleX(0.75f);
+    m4->setScaleX(0.75f);
+    this->addChild(m1);
+    this->addChild(m2);
+    this->addChild(m3);
+    this->addChild(m4);
+    
+    CCDrawNode *ste=CCDrawNode::create();
+    CCPoint rec[4]={
+        ccp(90,size.height/40*38),
+        ccp(size.width/3*2,size.height/40*38),
+        ccp(90,size.height/40*37),        
+        ccp(size.width/3*2,size.height/40*37)
+    };
+    
+    ste->drawPolygon(rec,4,ccc4FFromccc3B(ccYELLOW),1,ccc4FFromccc3B(ccYELLOW));
+   // this->addChild(ste);
+    
+    //Status Bar
+    CCDrawNode *ste2=CCDrawNode::create();
+    ste2->drawSegment(ccp(size.width/2,state->getPositionY()-25),ccp(size.width/2,0),1,ccc4FFromccc3B(ccBLUE));
+    this->addChild(ste2);
+ 
+    
+    CCDrawNode *sta=CCDrawNode::create();
+    sta->drawSegment(ccp(90,size.height/40*37.5),ccp(size.width/3*2,size.height/40*37.5),10,ccc4FFromccc3B(ccYELLOW));
+    //this->addChild(sta);
+    
+    
+    
+    
+    
     
     return true;
 }
@@ -183,9 +192,16 @@ void StartView::ccTouchesBegan(CCSet* touches,CCEvent* enevet){
 }
 void StartView::menuCloseCallback(CCObject* pSender)
 {
-    CCDirector::sharedDirector()->end();
+    //CCDirector::sharedDirector()->end();
+        float duration =1.0;
+        CCScene* next=SettingView::scene();
+        CCScene* pScene=CCTransitionJumpZoom::create(duration,next);
+        if(pScene){
+            CCDirector::sharedDirector()->replaceScene(pScene);
+        }
+
     
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  //  exit(0);
+//#endif
 }

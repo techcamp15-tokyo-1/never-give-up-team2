@@ -16,8 +16,8 @@ public:
     static string getPower();
     static string getStamina();
     static string getMoney();
+    float r,gc,b;
     
-  
     CREATE_FUNC(HelloWorld);
   
 };

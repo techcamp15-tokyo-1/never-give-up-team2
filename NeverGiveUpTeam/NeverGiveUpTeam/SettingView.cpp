@@ -19,13 +19,15 @@ CCScene* SettingView::scene()
 
 bool SettingView::init()
 {
+    
     if ( !CCLayer::init() )
     {
         return false;
     }
-    
+    this->setTouchMode(kCCTouchesAllAtOnce);
+    this->setTouchEnabled(true);
     CCSize size=CCDirector::sharedDirector()->getWinSize();
-    CCSprite* back=CCSprite::create("Background.jpeg");
+    CCSprite* back=CCSprite::create("SBG.png");
     back->setPosition(ccp(100.f,100.f));
     back->setTag(1);
     this->addChild(back);
@@ -40,36 +42,78 @@ bool SettingView::init()
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
-    CCLabelTTF* label1=CCLabelTTF::create("Setting","arial",20);
-    label1->setPosition(ccp(size.width/4,size.height/4*3));
-    this->addChild(label1);
     
-    CCParticleRain* rain=CCParticleRain::createWithTotalParticles(5000);
-    this->addChild(rain);
+    CCParticleSnow* snow=CCParticleSnow::createWithTotalParticles(5000);
+    snow->setSkewY(5.0f);
+    this->addChild(snow);
     
-    //BGMスイッチ
-    CCSprite* maskSprite=CCSprite::create("switch-mask.png");
-    CCSprite* onSprite=CCSprite::create("switch-on.png");
-    CCSprite* offSprite=CCSprite::create("switch-off.png");
-    CCSprite* thumbSprite=CCSprite::create("switch-thumb.png");
+        
+    TapSprite* setting1=TapSprite::create("setting1.png");
+    TapSprite* setting2=TapSprite::create("setting2.png");
+    TapSprite* setting3=TapSprite::create("setting3.png");
+    setting1->setPosition(ccp(size.width/2,size.height/3*2));
+    setting2->setPosition(ccp(size.width/2,size.height/3.5));
+    setting3->setPosition(ccp(size.width/2,size.height/8));
     
-    CCLabelTTF* onl=CCLabelTTF::create("On","Arial-BoldMT",16);
-    CCLabelTTF* offl=CCLabelTTF::create("Off","Arial-BoldMT",16);
-   // CCControlSwitch* pSwitch=CCControlSwitch::create(maskSprite,onSprite,offSprite,thumbSprite,onl,offl);
-   // pSwitch->setPosition(ccp(size.width/2,size.height/2));
-    //this->addChild(pSwitch);
-    //pSwitch->addTargetWithActionForControlEvents(this,cccontrol_selector(SettingView::switchCallBack),CCControlEventValueChanged);
+    setting1->setScale(0.5f);
+    setting2->setScale(0.5f);
+    setting3->setScale(0.5f);
+    this->addChild(setting1);
+    this->addChild(setting2);
+    this->addChild(setting3);
     
-    CCSprite* setting=CCSprite::create("setting.png");
-    setting->setPosition(ccp(size.width/2,size.height/4*3));
-    setting->setScale(0.5f);
-    this->addChild(setting);
+    //OptionContentSize
+    CCSize s_size=setting1->getContentSize();
+    //GBM Switch
+    CCMenuItemImage* item1 = CCMenuItemImage::create(
+                                                         "On.png",
+                                                         "On.png",
+                                                         this,
+                                                     menu_selector(SettingView::switchCallBack));
+    item1->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8));
+    item1->setScale(0.75f);
+    item1->setTag(1);
+    
+    //SE switch
+    CCMenuItemImage* item2 = CCMenuItemImage::create(
+                                                     "On.png",
+                                                     "On.png",
+                                                     this,
+                                                     menu_selector(SettingView::switchCallBack));
+    item2->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8*2));
+    item2->setScale(0.75f);
+        item2->setTag(2);
+
+    //VIBE Switch
+    CCMenuItemImage* item3 = CCMenuItemImage::create(
+                                                     "On.png",
+                                                     "On.png",
+                                                     this,
+                                                     menu_selector(SettingView::switchCallBack));
+    item3->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8*3));
+    item3->setScale(0.75f);
+        item3->setTag(3);
+
+    //NETWORK Switch
+    CCMenuItemImage* item4 = CCMenuItemImage::create(
+                                                     "On.png",
+                                                     "On.png",
+                                                     this,
+                                                     menu_selector(SettingView::switchCallBack));
+    
+    item4->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8*4));
+    item4->setScale(0.75f);
+        item4->setTag(4);
+    
+    CCMenu* menu=CCMenu::create(item1,item2,item3,item4,NULL);
+    menu->setPosition(CCPointZero);
+    this->addChild(menu,1);
+    
+    
+    
     return true;
 }
 
-void SettingView::switchCallBack(){
-    
-}
 
 void SettingView::next(){
     CCScene* next=TopView::scene();
@@ -137,3 +181,34 @@ void SettingView::menuCloseCallback(CCObject* pSender)
     exit(0);
 #endif
 }
+
+void SettingView::switchCallBack(CCObject* object){
+    CCMenuItem* item=(CCMenuItem *)(object);
+    int tag=item->getTag();//getTag
+    CCSize size=CCDirector::sharedDirector()->getWinSize();//getWindowSize
+    
+    CCNode* node = (CCMenuItem*)getChildByTag(tag);
+    //float s=node->getPositionY();
+    //float p=item->getChildByTag(1)->getPositionY();
+        CCLog("item_y=%f",node->getPositionY());
+    
+    //Off Switch
+     CCSprite* off=CCSprite::create("Off.png");
+     //off->setScale(0.75f);
+     CCSize s_size;
+     off->setScale(0.75f);
+
+    switch(tag){
+        case 1:
+            s_size=item->getContentSize();
+            off->setPosition(ccp(size.width/4*3+10,416.5));//size.height-node->getPositionY()));
+            this->addChild(off);
+            break;
+    }
+    
+}
+
+
+
+
+

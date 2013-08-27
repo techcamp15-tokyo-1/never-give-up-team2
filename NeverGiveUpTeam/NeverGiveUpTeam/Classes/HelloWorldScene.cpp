@@ -3,16 +3,13 @@ using namespace CocosDenshion;
 using namespace cocos2d;
 
 HelloWorld::HelloWorld(){
-
+r=0;b=0;gc=0;
 }
 CCScene* HelloWorld::scene()
 {
     CCScene *scene = CCScene::create();
     HelloWorld *layer = HelloWorld::create();
     scene->addChild(layer);
-    CCLog("HelloOk");
-    
-    
     return scene;
 }
 
@@ -49,7 +46,9 @@ bool HelloWorld::init()
     {
         return false;
     }
+    for(int i=0;i<10;i++){
     setStatus();
+    }
     this->setTouchMode(kCCTouchesAllAtOnce);
     this->setTouchEnabled(true);
     
@@ -69,9 +68,6 @@ bool HelloWorld::init()
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
     
-    CCScene* start=TopView::scene();
-    //CCDirector::sharedDirector()->pushScene(start);
-    CCDirector::sharedDirector()->runWithScene(start);
     
     CCSprite* back=CCSprite::create("StartBackground.jpeg");
     back->setPosition(ccp(0.f,0.f));
@@ -80,9 +76,11 @@ bool HelloWorld::init()
     
     
     
-    CCLabelTTF* label=CCLabelTTF::create("世界樹の不思議","arial",44);
-    label->setPosition(ccp(size.width/2,size.height/1.5));
-    this->addChild(label);
+    
+    CCSprite* title=CCSprite::create("title_logo.png");
+    title->setScaleX(0.75f);
+    title->setPosition(ccp(size.width/2,size.height/5*3));
+    this->addChild(title);
     
     TapSprite* startl=(TapSprite*)TapSprite::create("Start.png");
     startl->setPosition(ccp(size.width/2,size.height/3));
@@ -118,8 +116,8 @@ bool HelloWorld::init()
     CCParticleGalaxy* g=CCParticleGalaxy::createWithTotalParticles(1000);
     ccColor4F gcolor=g->getStartColor();
     gcolor.r=0;
-    gcolor.g=0.5f;
-    gcolor.b=0;
+    gcolor.g=1.0f;
+    gcolor.b=0.2f;
     gcolor.a=0;
     g->setStartColor(gcolor);
     this->addChild(g);

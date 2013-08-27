@@ -24,9 +24,9 @@ public:
     void GoToTitle();
     void Exit();
     void setSetting(bool bgm,bool se);
-    void switchCallBack();
+    void switchCallBack(CCObject* object);
     bool getBGM();
-    bool getSE();
+    bool getSE();    
     
     CREATE_FUNC(SettingView);
     
