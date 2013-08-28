@@ -17,6 +17,7 @@ CCScene* CollectView::scene()
     CCScene *scene = CCScene::create();
     CollectView *layer = CollectView::create();
     scene->addChild(layer);
+
     return scene;
 }
 
@@ -26,11 +27,11 @@ bool CollectView::init()
     {
         return false;
     }
-    
+    CollectView::set=false;
+    CollectView::set2=true;
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     CCSprite* back=CCSprite::create("ZBG.png");
     back->setPosition(ccp(size.width/2,size.height/2));
-    back->setTag(1);
     this->addChild(back);
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
@@ -110,27 +111,50 @@ void CollectView::setImage(){
         zukan->setPosition(ccp(size.width/2,size.height/2-40));
         zukan->setScaleX(1.2);
         zukan->setScaleY(1.8);
-        this->addChild(zukan);
+    zukan->setTag(4);
         
-//Under Bar
-        CCSprite* musi=CCSprite::create("KButton.png");
-        musi->setPosition(ccp(size.width/6,30));
-        musi->setScaleX(2);
-        musi->setScaleY(2.2);
-        this->addChild(musi);
-        
-        CCSprite* mi=CCSprite::create("MButton.png");
-        mi->setPosition(ccp(size.width/5*2+25,30));
-        mi->setScaleX(2);
-        mi->setScaleY(2.2);
-        this->addChild(mi);
+    CCSprite* y=CCSprite::create("mi.png");
+    y->setPosition(ccp(size.width/2,size.height/2-40));
+    y->setScaleX(1.2);
+    y->setScaleY(1.8);
+    y->setTag(5);
+    this->addChild(y);
+    this->addChild(zukan);
 
-        CCSprite* another=CCSprite::create("OButton.png");
-        another->setPosition(ccp(size.width/4*3,30));
-        another->setScaleX(2);
-        another->setScaleY(2.2);
-        this->addChild(another);
+    CCMenuItemImage *item1 = CCMenuItemImage::create(
+                                                     "KButton.png",
+                                                     "KButton.png",
+                                                     this,
+                                                     menu_selector(CollectView::CollectScene) );
+    item1->setPosition(ccp(size.width/6,30));
+    item1->setScaleX(2);
+    item1->setScaleY(2.2);
+    item1->setTag(1);
+    CCMenuItemImage *item2 = CCMenuItemImage::create(
+                                                     "MButton.png",
+                                                     "MButton.png",
+                                                     this,
+                                                     menu_selector(CollectView::CollectScene) );
+    item2->setPosition(ccp(size.width/5*2+25,30));
+    item2->setScaleX(2);
+    item2->setScaleY(2.2);
+    item2->setTag(2);
+    CCMenuItemImage *item3 = CCMenuItemImage::create(
+                                                     "OButton.png",
+                                                     "OButton.png",
+                                                     this,
+                                                     menu_selector(CollectView::CollectScene) );
+    item3->setPosition(ccp(size.width/4*3,30));
+    item3->setScaleX(2);
+    item3->setScaleY(2.2);
+    item3->setTag(3);
+    
+    
         //ここまで
+    CCMenu* Menu = CCMenu::create(item1,item2,item3, NULL);
+    Menu->setPosition( CCPointZero );
+    this->addChild(Menu, 1);
+
 
 
         
@@ -152,6 +176,22 @@ void CollectView::next(){
         CCDirector::sharedDirector()->replaceScene(pScene);
     }
 
+}
+void CollectView::CollectScene(CCMenuItemImage* image){
+    int tag=image->getTag();
+    CCSize size=CCDirector::sharedDirector()->getWinSize();
+    if(tag==1){
+        this->getChildByTag(4)->setVisible(CollectView::set);
+        CollectView::set=!(CollectView::set);
+        this->getChildByTag(5)->setVisible(CollectView::set2);
+                CollectView::set2=!(CollectView::set2);
+    }else if(tag==2){
+        this->getChildByTag(5)->setVisible(CollectView::set2);
+        CollectView::set2=!(CollectView::set2);
+        this->getChildByTag(4)->setVisible(CollectView::set);
+        CollectView::set=!(CollectView::set);
+        
+    }
 }
 
 void CollectView::menuCloseCallback(CCObject* pSender)

@@ -29,11 +29,16 @@ bool BoxView::init()
      this->setTouchEnabled(true);
     
     
+    
     CCSize size=CCDirector::sharedDirector()->getWinSize();
+    CCScrollView* scroll=CCScrollView::create(ccp(size.width,size.height));
+    scroll->setDirection(kCCScrollViewDirectionVertical);
+    this->addChild(scroll);
     CCSprite* back=CCSprite::create("Background.jpeg");
     back->setPosition(ccp(size.width/2,size.height/2));
     back->setTag(1);
-    this->addChild(back);
+//    this->addChild(back);
+    scroll->setContainer(back);
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
@@ -44,8 +49,8 @@ bool BoxView::init()
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
-    this->addChild(pMenu, 1);
-       
+    //this->addChild(pMenu, 1);
+    scroll->setContainer(pMenu);
     
     CCLabelTTF* label1=CCLabelTTF::create("Box","arial",20);
     label1->setPosition(ccp(size.width/4,size.height/4*3));

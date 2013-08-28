@@ -135,12 +135,8 @@ void TopView::hit(CCMenuItemImage* image,CCSet* set){
 
 void TopView::next(){
     CCScene* next=StartView::scene();
-   
     float duration=0.5f;
-
-   
-  
-        CCScene* pScene=CCTransitionFade::create(duration,next);
+     CCScene* pScene=CCTransitionFade::create(duration,next);
     if(pScene){
 
         SimpleAudioEngine::sharedEngine()->sharedEngine()->stopBackgroundMusic();
@@ -152,6 +148,20 @@ void TopView::next(){
 void TopView::ccTouchesBegan(CCSet* touches,CCEvent* event){
     
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    int s=user->getIntegerForKey("stamina");
+/*    if(s<=0){
+        CCMessageBox("スタミナは時間経過、または回復アイテムで回復することができます","スタミナ切れ！");
+        CCScene* next=StartView::scene();
+        float duration=0.5f;
+        CCScene* pScene=CCTransitionFade::create(duration,next);
+        if(pScene){
+            
+            SimpleAudioEngine::sharedEngine()->sharedEngine()->stopBackgroundMusic();
+            CCDirector::sharedDirector()->replaceScene(pScene);
+        }
+
+    }
+ */
     if(0<=user->getIntegerForKey("stamina")){
     CCLog("ccTouchesBegan");
     CCTouch* touch=(CCTouch*)touches->anyObject();
@@ -170,7 +180,20 @@ void TopView::ccTouchesBegan(CCSet* touches,CCEvent* event){
 
 void TopView::ccTouchesMoved(CCSet* touches,CCEvent* event){
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
-    CCLog("s=%d",user->getIntegerForKey("stamina"));
+    int s=user->getIntegerForKey("stamina");
+    if(s<=0){
+        CCMessageBox("スタミナは時間経過、または回復アイテムで回復することができます","スタミナ切れ！");
+        CCMessageBox("カブトムシ　*2\nクワガタ　*4\n蜂の巣 *1\nハチミツ *3\nカブトムシ　*2\nクワガタ　*4\n蜂の巣 *1\nハチミツ *3\nカブトムシ　*2\nクワガタ　*4\n蜂の巣 *1\nハチミツ *3","獲得！");
+        CCScene* next=StartView::scene();
+        float duration=0.5f;
+        CCScene* pScene=CCTransitionFade::create(duration,next);
+        if(pScene){
+            
+            SimpleAudioEngine::sharedEngine()->sharedEngine()->stopBackgroundMusic();
+            CCDirector::sharedDirector()->replaceScene(pScene);
+        }
+
+    }
     if(0<=user->getIntegerForKey("stamina")){
     CCLog("s=%d",user->getIntegerForKey("stamina"));
     CCSprite* player=(CCSprite*)this->getChildByTag(1);
@@ -210,11 +233,9 @@ void TopView::ccTouchesMoved(CCSet* touches,CCEvent* event){
     }
     
     }
-   
 }
 
-void TopView::menuCloseCallback(CCObject* pSender)
-{
+void TopView::menuCloseCallback(CCObject* pSender){
     CCDirector::sharedDirector()->end();
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

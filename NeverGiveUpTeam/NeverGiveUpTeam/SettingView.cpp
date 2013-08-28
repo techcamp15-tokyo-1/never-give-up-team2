@@ -24,52 +24,56 @@ bool SettingView::init()
     {
         return false;
     }
+    //タッチ許可とタッチモードの設定
     this->setTouchMode(kCCTouchesAllAtOnce);
     this->setTouchEnabled(true);
+    //画面サイズの取得
     CCSize size=CCDirector::sharedDirector()->getWinSize();
+    //バックグラウンド画像の設定
     CCSprite* back=CCSprite::create("SBG.png");
     back->setPosition(ccp(size.width/2,size.height/2));
     back->setTag(1);
     this->addChild(back);
+    
+    //メニューアイテムの設定
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
                                                           this,
                                                           menu_selector(SettingView::menuCloseCallback) );
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 25, 25) );
-        pCloseItem->setScale(2.0);
+    pCloseItem->setScale(2.0);
+    
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
     
+    //雪のパーティクル処理
     CCParticleSnow* snow=CCParticleSnow::createWithTotalParticles(5000);
     snow->setSkewY(5.0f);
     this->addChild(snow);
     
-        
+    //セッティング画面上部の設定
     TapSprite* setting1=TapSprite::create("setting1.png");
     setting1->setPosition(ccp(size.width/2,size.height/3*2));
-  //  setting1->setScale(0.5f);
     this->addChild(setting1);
-    
+    //おしらせの設定
     CCMenuItemImage* news = CCMenuItemImage::create(
                                     "setting2.png",
                                     "setting2.png",
                                     this,
                                     menu_selector(SettingView::News));
     news->setPosition(ccp(size.width/2,size.height/8));
-  //  news->setScale(0.5f);
     news->setTag(9);
     
-    
+        //タイトルに戻る　の設定
     CCMenuItemImage* title = CCMenuItemImage::create(
                                                     "setting3.png",
                                                     "setting3.png",
                                                     this,
                                                      menu_selector(SettingView::GoToTitle));
     title->setPosition(ccp(size.width/2,size.height/3.5));
-  //  title->setScale(0.5f);
     title->setTag(10);
 
     
@@ -87,8 +91,7 @@ bool SettingView::init()
                                                          this,
                                                      menu_selector(SettingView::switchCallBack));
     item1->setPosition(ccp(size.width/4*3+10,size.height/8*7-20));
-   // item1->setScale(0.75f);
-    item1->setTag(1);
+       item1->setTag(1);
     }else{
          item1 = CCMenuItemImage::create(
                                                          "Off.png",
@@ -96,7 +99,6 @@ bool SettingView::init()
                                                          this,
                                                          menu_selector(SettingView::switchCallBack));
         item1->setPosition(ccp(size.width/4*3+10,size.height/8*7-20));
-  //      item1->setScale(0.75f);
         item1->setTag(5);
 
     }
@@ -111,7 +113,6 @@ bool SettingView::init()
                                                      this,
                                                      menu_selector(SettingView::switchCallBack));
     item2->setPosition(ccp(size.width/4*3+10,size.height/8*6-20));
-   // item2->setScale(0.75f);
         item2->setTag(2);
         
     }else{
@@ -121,7 +122,6 @@ bool SettingView::init()
                                                          this,
                                                          menu_selector(SettingView::switchCallBack));
         item2->setPosition(ccp(size.width/4*3+10,size.height/8*6-20));
-    //    item2->setScale(0.75f);
         item2->setTag(6);
      
     }
@@ -134,7 +134,6 @@ bool SettingView::init()
                                                      this,
                                                      menu_selector(SettingView::switchCallBack));
     item3->setPosition(ccp(size.width/4*3+10,size.height/8*5-20));
-   // item3->setScale(0.75f);
         item3->setTag(3);
     }else{
         item3 = CCMenuItemImage::create(
@@ -143,7 +142,6 @@ bool SettingView::init()
                                                          this,
                                                          menu_selector(SettingView::switchCallBack));
         item3->setPosition(ccp(size.width/4*3+10,size.height/8*5-20));
-  //      item3->setScale(0.75f);
         item3->setTag(7);
     }
 
@@ -156,7 +154,6 @@ bool SettingView::init()
                                                      menu_selector(SettingView::switchCallBack));
     
     item4->setPosition(ccp(size.width/4*3+10,size.height/8*4-20));
-  //  item4->setScale(0.75f);
         item4->setTag(4);
     }else{
          item4 = CCMenuItemImage::create(
@@ -165,7 +162,6 @@ bool SettingView::init()
                                                          this,
                                                          menu_selector(SettingView::switchCallBack));
         item4->setPosition(ccp(size.width/4*3+10,size.height/8*4-20));
-   //     item4->setScale(0.75f);
         item4->setTag(8);
     }
     
@@ -278,15 +274,13 @@ void SettingView::switchCallBack(CCMenuItemImage* object){
                                                      "Off.png",
                                                      this,
                                                      menu_selector(SettingView::switchCallBack));
-  //  off->setScale(0.75f);
-    
+   
     //On Switch
     CCMenuItemImage* on = CCMenuItemImage::create(
                                                    "On.png",
                                                    "On.png",
                                                    this,
                                                    menu_selector(SettingView::switchCallBack));
-    //on->setScale(0.75f);
  
 
      switch(tag){

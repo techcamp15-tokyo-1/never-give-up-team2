@@ -17,7 +17,9 @@ public:
     void menuCloseCallback(CCObject* pSender);
     void next();
     void setImage();
+    void CollectScene(CCMenuItemImage* image);
     CREATE_FUNC(CollectView);
+    bool set,set2;
 };
 
 

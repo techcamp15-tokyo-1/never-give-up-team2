@@ -31,7 +31,10 @@ void HelloWorld::setStatus(){
     if(money==(-1)){
         user->setIntegerForKey("money",0);
     }
+    
     user->setIntegerForKey("stamina",100);
+    user->setIntegerForKey("money",10000);
+    
     
     CCLog("p=%d,s=%d,m=%d",power,stamina,money);
     
@@ -50,8 +53,11 @@ bool HelloWorld::init()
     for(int i=0;i<10;i++){
     setStatus();
     }
+    CCMessageBox("test", "です");
+   
     this->setTouchMode(kCCTouchesAllAtOnce);
     this->setTouchEnabled(true);
+    
     
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
     if(user->getBoolForKey("BGM_KEY",true)){

@@ -59,7 +59,7 @@ bool ShopView::init()
     CCParticleGalaxy* galaxy=CCParticleGalaxy::createWithTotalParticles(1000);
     this->addChild(galaxy);
     
-    Buy(700);
+    Buy(700,"成長肥料");
       CCSprite* state=CCSprite::create("state.png");//ステータスバー
     state->setScaleY(0.7);
     state->setScaleX(0.9);
@@ -85,6 +85,40 @@ bool ShopView::init()
     this->addChild((stamina));
     this->addChild((money));
     //ここまで
+    
+    //ここから商品
+    /*
+    CCMenuItemImage *item1 = CCMenuItemImage::create(
+                                                          ".png",
+                                                          ".png",
+                                                          this,
+                                                          menu_selector(ShopView::Buy) );
+    item1->setPosition( ccp() );
+    CCMenuItemImage *item2 = CCMenuItemImage::create(
+                                                     ".png",
+                                                     ".png",
+                                                     this,
+                                                     menu_selector(ShopView::Buy) );
+    item2->setPosition( ccp() );
+    CCMenuItemImage *item3 = CCMenuItemImage::create(
+                                                     ".png",
+                                                     ".png",
+                                                     this,
+                                                     menu_selector(ShopView::Buy) );
+    item3->setPosition( ccp() );
+    CCMenuItemImage *item4 = CCMenuItemImage::create(
+                                                     ".png",
+                                                     ".png",
+                                                     this,
+                                                     menu_selector(ShopView::Buy) );
+    item4->setPosition( ccp() );
+
+    
+    CCMenu* Menu = CCMenu::create(item1,item2,item3,item4, NULL);
+    Menu->setPosition( CCPointZero );
+    this->addChild(Menu, 1);
+     */
+    //ここまで
 
     
     return true;
@@ -99,7 +133,7 @@ void ShopView::next(){
         CCDirector::sharedDirector()->replaceScene(pScene);
     }
 }
-bool ShopView::Buy(const int Price){
+bool ShopView::Buy(const int Price,const string str){
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
     int m=user->getIntegerForKey("money",-1);
     CCLog("buy now load money %d",m);
@@ -112,7 +146,15 @@ bool ShopView::Buy(const int Price){
         m-=Price;
         user->setIntegerForKey("money",m);
         user->flush();
+        string result="";
+        result+=str+"\n";
+//        string str="Item";
+        ostringstream ostring;//stream 宣言
+        ostring<<(Price);//iをstreamに代入
+        string num=ostring.str();//int to string
+        result+="\t"+num;
         CCLog("buy after money %d",m);
+        CCMessageBox(result.c_str(),"購入！");
     }
     return true;    
 }
