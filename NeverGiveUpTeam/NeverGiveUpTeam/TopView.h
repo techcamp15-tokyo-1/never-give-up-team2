@@ -16,6 +16,10 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void next();
+    void hit(CCMenuItemImage* image,CCSet* set);
+    void ccTouchesBegan(CCSet* touches,CCEvent* event);
+    void ccTouchesMoved(CCSet* touches,CCEvent* event);
+    void Dec_Stamina(const int consume);
     CREATE_FUNC(TopView);
 };
 

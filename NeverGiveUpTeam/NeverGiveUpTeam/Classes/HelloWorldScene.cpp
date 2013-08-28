@@ -31,6 +31,7 @@ void HelloWorld::setStatus(){
     if(money==(-1)){
         user->setIntegerForKey("money",0);
     }
+    user->setIntegerForKey("stamina",100);
     
     CCLog("p=%d,s=%d,m=%d",power,stamina,money);
     
@@ -52,8 +53,10 @@ bool HelloWorld::init()
     this->setTouchMode(kCCTouchesAllAtOnce);
     this->setTouchEnabled(true);
     
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
-   
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    if(user->getBoolForKey("BGM_KEY",true)){
+        SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
+    }
     
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
@@ -62,6 +65,7 @@ bool HelloWorld::init()
                                         this,
                                         menu_selector(HelloWorld::callback));
     pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
+    pCloseItem->setScale(2.0);
 
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
@@ -70,7 +74,7 @@ bool HelloWorld::init()
     
     
     CCSprite* back=CCSprite::create("StartBackground.jpeg");
-    back->setPosition(ccp(0.f,0.f));
+    back->setPosition(ccp(size.width/2,size.height/2));
     this->addChild(back);
     
     
@@ -78,21 +82,21 @@ bool HelloWorld::init()
     
     
     CCSprite* title=CCSprite::create("title_logo.png");
-    title->setScaleX(0.75f);
     title->setPosition(ccp(size.width/2,size.height/5*3));
+    title->setScale(1.25);
     this->addChild(title);
     
     TapSprite* startl=(TapSprite*)TapSprite::create("Start.png");
     startl->setPosition(ccp(size.width/2,size.height/3));
-    startl->setScale(0.25f);
     startl->setTag(1);
+    startl->setScale(0.5);
     this->addChild(startl);
     
     
     
-    CCLabelTTF* copyright=CCLabelTTF::create("©2013 TechnologyCamp","arial",20);
+    CCLabelTTF* copyright=CCLabelTTF::create("©2013 TechnologyCamp","arial",40);
     //NGU=Never Give Up Team
-    CCLabelTTF* dev=CCLabelTTF::create("CoDeveloped by NGUT","arial",20);
+    CCLabelTTF* dev=CCLabelTTF::create("CoDeveloped by NGUT","arial",40);
     copyright->setPosition(ccp(size.width/2,size.height/5));
     dev->setPosition(ccp(size.width/2,size.height/7));
     
@@ -110,6 +114,7 @@ bool HelloWorld::init()
     color.b=0.5f;
     color.a=0.5f;
     par->setStartColor(color);
+    par->setScale(2.0);
     par->setPosition(ccp(size.width/10*9,size.height/10*9));
     this->addChild(par);
     
@@ -140,6 +145,7 @@ void HelloWorld::callback(){
     float duration=0.5f;
     CCScene* pScene=CCTransitionProgressInOut::create(duration,next);
     if(pScene){
+        SimpleAudioEngine::sharedEngine()->sharedEngine()->stopBackgroundMusic();
         CCDirector::sharedDirector()->replaceScene(pScene);
     }
     //    float x=0,y=0,z=0;
@@ -174,8 +180,8 @@ string HelloWorld::getStamina(){
     ostringstream ostring;//stream 宣言
     ostring<<(stamina);//iをstreamに代入
     string num=ostring.str();//int to string
-    str+=num;//連結
-    str+="/100";
+    str=num;//連結
+ //   str+="/100";
     return str;
 }
 

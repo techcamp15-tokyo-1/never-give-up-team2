@@ -28,7 +28,7 @@ bool SettingView::init()
     this->setTouchEnabled(true);
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     CCSprite* back=CCSprite::create("SBG.png");
-    back->setPosition(ccp(100.f,100.f));
+    back->setPosition(ccp(size.width/2,size.height/2));
     back->setTag(1);
     this->addChild(back);
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
@@ -36,8 +36,8 @@ bool SettingView::init()
                                                           "CloseSelected.png",
                                                           this,
                                                           menu_selector(SettingView::menuCloseCallback) );
-    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
-    
+    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 25, 25) );
+        pCloseItem->setScale(2.0);
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
@@ -49,65 +49,133 @@ bool SettingView::init()
     
         
     TapSprite* setting1=TapSprite::create("setting1.png");
-    TapSprite* setting2=TapSprite::create("setting2.png");
-    TapSprite* setting3=TapSprite::create("setting3.png");
     setting1->setPosition(ccp(size.width/2,size.height/3*2));
-    setting2->setPosition(ccp(size.width/2,size.height/3.5));
-    setting3->setPosition(ccp(size.width/2,size.height/8));
-    
-    setting1->setScale(0.5f);
-    setting2->setScale(0.5f);
-    setting3->setScale(0.5f);
+  //  setting1->setScale(0.5f);
     this->addChild(setting1);
-    this->addChild(setting2);
-    this->addChild(setting3);
+    
+    CCMenuItemImage* news = CCMenuItemImage::create(
+                                    "setting2.png",
+                                    "setting2.png",
+                                    this,
+                                    menu_selector(SettingView::News));
+    news->setPosition(ccp(size.width/2,size.height/8));
+  //  news->setScale(0.5f);
+    news->setTag(9);
+    
+    
+    CCMenuItemImage* title = CCMenuItemImage::create(
+                                                    "setting3.png",
+                                                    "setting3.png",
+                                                    this,
+                                                     menu_selector(SettingView::GoToTitle));
+    title->setPosition(ccp(size.width/2,size.height/3.5));
+  //  title->setScale(0.5f);
+    title->setTag(10);
+
     
     //OptionContentSize
     CCSize s_size=setting1->getContentSize();
     //GBM Switch
-    CCMenuItemImage* item1 = CCMenuItemImage::create(
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    
+    CCMenuItemImage *item1,*item2,*item3,*item4;
+    
+    if(user->getBoolForKey("BGM_KEY")){
+     item1 = CCMenuItemImage::create(
                                                          "On.png",
                                                          "On.png",
                                                          this,
                                                      menu_selector(SettingView::switchCallBack));
-    item1->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8));
-    item1->setScale(0.75f);
+    item1->setPosition(ccp(size.width/4*3+10,size.height/8*7-20));
+   // item1->setScale(0.75f);
     item1->setTag(1);
+    }else{
+         item1 = CCMenuItemImage::create(
+                                                         "Off.png",
+                                                         "Off.png",
+                                                         this,
+                                                         menu_selector(SettingView::switchCallBack));
+        item1->setPosition(ccp(size.width/4*3+10,size.height/8*7-20));
+  //      item1->setScale(0.75f);
+        item1->setTag(5);
+
+    }
+    
+    
     
     //SE switch
-    CCMenuItemImage* item2 = CCMenuItemImage::create(
+    if(user->getBoolForKey("SE_KEY")){
+        item2=CCMenuItemImage::create(
                                                      "On.png",
                                                      "On.png",
                                                      this,
                                                      menu_selector(SettingView::switchCallBack));
-    item2->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8*2));
-    item2->setScale(0.75f);
+    item2->setPosition(ccp(size.width/4*3+10,size.height/8*6-20));
+   // item2->setScale(0.75f);
         item2->setTag(2);
+        
+    }else{
+         item2 = CCMenuItemImage::create(
+                                                         "Off.png",
+                                                         "Off.png",
+                                                         this,
+                                                         menu_selector(SettingView::switchCallBack));
+        item2->setPosition(ccp(size.width/4*3+10,size.height/8*6-20));
+    //    item2->setScale(0.75f);
+        item2->setTag(6);
+     
+    }
 
     //VIBE Switch
-    CCMenuItemImage* item3 = CCMenuItemImage::create(
+    if(user->getBoolForKey("VIBE_KEY")){
+     item3 = CCMenuItemImage::create(
                                                      "On.png",
                                                      "On.png",
                                                      this,
                                                      menu_selector(SettingView::switchCallBack));
-    item3->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8*3));
-    item3->setScale(0.75f);
+    item3->setPosition(ccp(size.width/4*3+10,size.height/8*5-20));
+   // item3->setScale(0.75f);
         item3->setTag(3);
+    }else{
+        item3 = CCMenuItemImage::create(
+                                                         "Off.png",
+                                                         "Off.png",
+                                                         this,
+                                                         menu_selector(SettingView::switchCallBack));
+        item3->setPosition(ccp(size.width/4*3+10,size.height/8*5-20));
+  //      item3->setScale(0.75f);
+        item3->setTag(7);
+    }
 
     //NETWORK Switch
-    CCMenuItemImage* item4 = CCMenuItemImage::create(
+    if(user->getBoolForKey("NET_KEY")){
+     item4 = CCMenuItemImage::create(
                                                      "On.png",
                                                      "On.png",
                                                      this,
                                                      menu_selector(SettingView::switchCallBack));
     
-    item4->setPosition(ccp(size.width/4*3+10,size.height-s_size.height/8*4));
-    item4->setScale(0.75f);
+    item4->setPosition(ccp(size.width/4*3+10,size.height/8*4-20));
+  //  item4->setScale(0.75f);
         item4->setTag(4);
+    }else{
+         item4 = CCMenuItemImage::create(
+                                                         "Off.png",
+                                                         "Off.png",
+                                                         this,
+                                                         menu_selector(SettingView::switchCallBack));
+        item4->setPosition(ccp(size.width/4*3+10,size.height/8*4-20));
+   //     item4->setScale(0.75f);
+        item4->setTag(8);
+    }
     
     CCMenu* menu=CCMenu::create(item1,item2,item3,item4,NULL);
     menu->setPosition(CCPointZero);
+    
+    CCMenu* menu2=CCMenu::create(news,title,NULL);
+    menu2->setPosition(CCPointZero);
     this->addChild(menu,1);
+    this->addChild(menu2,1);
     
     
     
@@ -128,35 +196,52 @@ void SettingView::next(){
 
 void SettingView::BGM_Off(){
     SettingView::BGM=false;
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    user->setBoolForKey("BGM_KEY",false);
+    user->flush();
+
 }
 void SettingView::SE_Off(){
-    SettingView::SE=false;
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    user->setBoolForKey("SE_KEY",false);
+    user->flush();
 }
 
 void SettingView::BGM_On(){
     SettingView::BGM=true;
-}
-void SettingView::SE_On(){
-    SettingView::SE=true;
-}
-
-void SettingView::setSetting(bool bgm, bool se){
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
-    user->setBoolForKey("BGM_KEY",bgm);
-    user->setBoolForKey("SE_KEY",se);
+    user->setBoolForKey("BGM_KEY",true);
     user->flush();
 }
-
-bool SettingView::getBGM(){
+void SettingView::SE_On(){
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
-    bool b=user->getBoolForKey("BGM_KEY",true);
-    return b;
+    user->setBoolForKey("SE_KEY",true);
+    user->flush();
+
 }
 
-bool SettingView::getSE(){
+
+void SettingView::VIBE_On(){
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
-    bool s=user->getBoolForKey("SE_KEY",true);
-    return s;
+    user->setBoolForKey("VIBE_KEY",true);
+    user->flush();
+
+}
+void SettingView::VIBE_Off(){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    user->setBoolForKey("VIBE_KEY",false);
+    user->flush();
+}
+void SettingView::NET_On(){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    user->setBoolForKey("NET_KEY",true);
+    user->flush();
+    
+}
+void SettingView::NET_Off(){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    user->setBoolForKey("NET_KEY",false);
+    user->flush();
 }
 
 void SettingView::Exit(){
@@ -171,7 +256,9 @@ void SettingView::GoToTitle(){
         CCDirector::sharedDirector()->replaceScene(pScene);
     }
 }
-
+void SettingView::News(){
+    CCLog("Version1.0 リリースしました");
+}
 
 void SettingView::menuCloseCallback(CCObject* pSender)
 {
@@ -182,30 +269,105 @@ void SettingView::menuCloseCallback(CCObject* pSender)
 #endif
 }
 
-void SettingView::switchCallBack(CCObject* object){
-    CCMenuItem* item=(CCMenuItem *)(object);
-    int tag=item->getTag();//getTag
-    CCSize size=CCDirector::sharedDirector()->getWinSize();//getWindowSize
-    
-    CCNode* node = (CCMenuItem*)getChildByTag(tag);
-    //float s=node->getPositionY();
-    //float p=item->getChildByTag(1)->getPositionY();
-        CCLog("item_y=%f",node->getPositionY());
-    
+void SettingView::switchCallBack(CCMenuItemImage* object){
+    int tag=object->getTag();
+    CCSize size=CCDirector::sharedDirector()->getWinSize();
     //Off Switch
-     CCSprite* off=CCSprite::create("Off.png");
-     //off->setScale(0.75f);
-     CCSize s_size;
-     off->setScale(0.75f);
+    CCMenuItemImage* off = CCMenuItemImage::create(
+                                                     "Off.png",
+                                                     "Off.png",
+                                                     this,
+                                                     menu_selector(SettingView::switchCallBack));
+  //  off->setScale(0.75f);
+    
+    //On Switch
+    CCMenuItemImage* on = CCMenuItemImage::create(
+                                                   "On.png",
+                                                   "On.png",
+                                                   this,
+                                                   menu_selector(SettingView::switchCallBack));
+    //on->setScale(0.75f);
+ 
 
-    switch(tag){
+     switch(tag){
         case 1:
-            s_size=item->getContentSize();
-            off->setPosition(ccp(size.width/4*3+10,416.5));//size.height-node->getPositionY()));
-            this->addChild(off);
+            CCLog("tag(1)Ok");
+
+             off->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+             off->setTag(5);
+             BGM_Off();
+             
             break;
+         case 2:
+             CCLog("tag(2)Ok");
+             off->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+                          off->setTag(2);
+             SE_Off();
+
+             
+             break;
+         case 3:
+             CCLog("tag(3)Ok");
+             off->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+                          off->setTag(3);
+             VIBE_Off();
+
+             
+             break;
+         case 4:
+             CCLog("tag(4)Ok");
+             off->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+                          off->setTag(4);
+             NET_Off();
+
+             
+             break;
+         case 5:
+             CCLog("tag(5)Ok");
+             on->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+             on->setTag(1);
+             BGM_On();
+
+             
+             break;
+         case 6:
+             CCLog("tag(6)Ok");
+             on->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+             on->setTag(6);
+             SE_On();
+
+             
+             break;
+         case 7:
+             CCLog("tag(7)Ok");
+             on->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+             on->setTag(7);
+             VIBE_On();
+
+             
+             break;
+         case 8:
+             CCLog("tag(8)Ok");
+             on->setPosition(ccp(size.width/4*3+10,object->getPositionY()));
+             on->setTag(8);
+             NET_On();
+
+             
+             break;
+         default:
+             CCLog("CallBack No Target");
+             break;
+             
     }
     
+    object->setVisible(false);
+    object->setTag(1);
+    
+    if(tag<=4){
+         this->addChild(off);
+    }else{
+         this->addChild(on);
+    }
 }
 
 

@@ -23,6 +23,10 @@
 #include "cocos-ext.h"
 #include "XTLayer.h"
 #include "TapSprite.h"
+#include <iostream>
+#include <sstream>
+#include <string>
+
 
 //名前空間指定マクロ
 USING_NS_CC_EXT;

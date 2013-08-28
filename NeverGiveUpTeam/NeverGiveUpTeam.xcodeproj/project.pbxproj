@@ -306,6 +306,13 @@
 		E16D377517C9D7B3008F16E8 /* colk.png in Resources */ = {isa = PBXBuildFile; fileRef = E16D377417C9D7B1008F16E8 /* colk.png */; };
 		E16D377717C9DD3F008F16E8 /* Start.png in Resources */ = {isa = PBXBuildFile; fileRef = E16D377617C9DD3E008F16E8 /* Start.png */; };
 		E16D377917C9DD4B008F16E8 /* ami.png in Resources */ = {isa = PBXBuildFile; fileRef = E16D377817C9DD49008F16E8 /* ami.png */; };
+		E174D3DD17CE04B100ECB5B1 /* MButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3DC17CE04B100ECB5B1 /* MButton.png */; };
+		E174D3E117CE04BE00ECB5B1 /* Hmmer.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3DE17CE04BE00ECB5B1 /* Hmmer.png */; };
+		E174D3E217CE04BE00ECB5B1 /* KButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3DF17CE04BE00ECB5B1 /* KButton.png */; };
+		E174D3E317CE04BE00ECB5B1 /* OButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3E017CE04BE00ECB5B1 /* OButton.png */; };
+		E174D3E517CE068D00ECB5B1 /* z.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3E417CE068C00ECB5B1 /* z.png */; };
+		E174D3E917CE0B1200ECB5B1 /* hatena.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3E817CE0B1100ECB5B1 /* hatena.png */; };
+		E174D3EB17CE19C900ECB5B1 /* mi.png in Resources */ = {isa = PBXBuildFile; fileRef = E174D3EA17CE19C900ECB5B1 /* mi.png */; };
 		E19EBDC917CC81B2009C780F /* setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = E19EBDC617CC81B1009C780F /* setting1.png */; };
 		E19EBDCA17CC81B2009C780F /* setting2.png in Resources */ = {isa = PBXBuildFile; fileRef = E19EBDC717CC81B1009C780F /* setting2.png */; };
 		E19EBDCB17CC81B2009C780F /* setting3.png in Resources */ = {isa = PBXBuildFile; fileRef = E19EBDC817CC81B1009C780F /* setting3.png */; };
@@ -314,10 +321,7 @@
 		E1C81DA117CCA5E400B2F998 /* setting3.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C81D9E17CCA5E400B2F998 /* setting3.png */; };
 		E1DC1ED817C9FF6D00D008DE /* XTLayer.h in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DC1ECF17C9EE6C00D008DE /* XTLayer.h */; };
 		E1DC1EDB17CA17B200D008DE /* TapSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1DC1EDA17CA17B200D008DE /* TapSprite.cpp */; };
-		E1DC1EE017CB25BC00D008DE /* B.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EDC17CB25B900D008DE /* B.png */; };
-		E1DC1EE117CB25BC00D008DE /* R.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EDD17CB25BA00D008DE /* R.png */; };
 		E1DC1EE217CB25BC00D008DE /* state.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EDE17CB25BB00D008DE /* state.png */; };
-		E1DC1EE317CB25BC00D008DE /* Y.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EDF17CB25BC00D008DE /* Y.png */; };
 		E1DC1EE517CB25E000D008DE /* Box.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EE417CB25E000D008DE /* Box.png */; };
 		E1DC1EE917CB25ED00D008DE /* Forest.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EE617CB25EB00D008DE /* Forest.png */; };
 		E1DC1EEA17CB25ED00D008DE /* Shop.png in Resources */ = {isa = PBXBuildFile; fileRef = E1DC1EE717CB25EC00D008DE /* Shop.png */; };
@@ -962,6 +966,13 @@
 		E16D377417C9D7B1008F16E8 /* colk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = colk.png; path = ../../../Downloads/top/colk.png; sourceTree = "<group>"; };
 		E16D377617C9DD3E008F16E8 /* Start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Start.png; path = "../../../Downloads/top 2/Start.png"; sourceTree = "<group>"; };
 		E16D377817C9DD49008F16E8 /* ami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ami.png; path = "../../../Downloads/top 2/ami.png"; sourceTree = "<group>"; };
+		E174D3DC17CE04B100ECB5B1 /* MButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MButton.png; path = "../../../Downloads/top 8/図鑑素材/MButton.png"; sourceTree = "<group>"; };
+		E174D3DE17CE04BE00ECB5B1 /* Hmmer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hmmer.png; path = "../../../Downloads/top 8/図鑑素材/Hmmer.png"; sourceTree = "<group>"; };
+		E174D3DF17CE04BE00ECB5B1 /* KButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KButton.png; path = "../../../Downloads/top 8/図鑑素材/KButton.png"; sourceTree = "<group>"; };
+		E174D3E017CE04BE00ECB5B1 /* OButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OButton.png; path = "../../../Downloads/top 8/図鑑素材/OButton.png"; sourceTree = "<group>"; };
+		E174D3E417CE068C00ECB5B1 /* z.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = z.png; path = ../../../Downloads/z.png; sourceTree = "<group>"; };
+		E174D3E817CE0B1100ECB5B1 /* hatena.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hatena.png; path = ../../../Downloads/hatena.png; sourceTree = "<group>"; };
+		E174D3EA17CE19C900ECB5B1 /* mi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mi.png; path = ../../../Downloads/mi.png; sourceTree = "<group>"; };
 		E19EBDC617CC81B1009C780F /* setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting1.png; path = ../../../Desktop/setting1.png; sourceTree = "<group>"; };
 		E19EBDC717CC81B1009C780F /* setting2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting2.png; path = ../../../Desktop/setting2.png; sourceTree = "<group>"; };
 		E19EBDC817CC81B1009C780F /* setting3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting3.png; path = ../../../Desktop/setting3.png; sourceTree = "<group>"; };
@@ -972,10 +983,7 @@
 		E1DC1ECF17C9EE6C00D008DE /* XTLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XTLayer.h; path = ../../../Downloads/XTLayer/XTLayer.h; sourceTree = "<group>"; };
 		E1DC1ED917CA17A600D008DE /* TapSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapSprite.h; sourceTree = "<group>"; };
 		E1DC1EDA17CA17B200D008DE /* TapSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TapSprite.cpp; sourceTree = "<group>"; };
-		E1DC1EDC17CB25B900D008DE /* B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = B.png; path = "../../../Downloads/top 4/ステータスバー/B.png"; sourceTree = "<group>"; };
-		E1DC1EDD17CB25BA00D008DE /* R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = R.png; path = "../../../Downloads/top 4/ステータスバー/R.png"; sourceTree = "<group>"; };
 		E1DC1EDE17CB25BB00D008DE /* state.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = state.png; path = "../../../Downloads/top 4/ステータスバー/state.png"; sourceTree = "<group>"; };
-		E1DC1EDF17CB25BC00D008DE /* Y.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Y.png; path = "../../../Downloads/top 4/ステータスバー/Y.png"; sourceTree = "<group>"; };
 		E1DC1EE417CB25E000D008DE /* Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Box.png; path = "../../../Downloads/top 4/Top画面/Box.png"; sourceTree = "<group>"; };
 		E1DC1EE617CB25EB00D008DE /* Forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Forest.png; path = "../../../Downloads/top 4/Top画面/Forest.png"; sourceTree = "<group>"; };
 		E1DC1EE717CB25EC00D008DE /* Shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Shop.png; path = "../../../Downloads/top 4/Top画面/Shop.png"; sourceTree = "<group>"; };
@@ -1068,10 +1076,7 @@
 		E16D339317C7309F008F16E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E1DC1EDC17CB25B900D008DE /* B.png */,
-				E1DC1EDD17CB25BA00D008DE /* R.png */,
 				E1DC1EDE17CB25BB00D008DE /* state.png */,
-				E1DC1EDF17CB25BC00D008DE /* Y.png */,
 				E16D375817C8E2B6008F16E8 /* beshi.mp3 */,
 				E16D375917C8E2B7008F16E8 /* bon.mp3 */,
 				E1DC1EF617CB465D00D008DE /* state.png */,
@@ -1112,9 +1117,11 @@
 				E16D376D17C9D4B0008F16E8 /* ZukanButton.png */,
 				E16D373617C73224008F16E8 /* Grape.png */,
 				E16D373717C73224008F16E8 /* Melon.png */,
+				E174D3E417CE068C00ECB5B1 /* z.png */,
 				E1DC1EEE17CB442500D008DE /* Forest.png */,
 				E1DC1EEF17CB442600D008DE /* Shop.png */,
 				E1C81D9C17CCA5E400B2F998 /* setting1.png */,
+				E174D3E817CE0B1100ECB5B1 /* hatena.png */,
 				E1C81D9D17CCA5E400B2F998 /* setting2.png */,
 				E1C81D9E17CCA5E400B2F998 /* setting3.png */,
 				E1DC1EF017CB442800D008DE /* Zukan.png */,
@@ -1125,6 +1132,11 @@
 				E16D373817C73224008F16E8 /* Peach.png */,
 				E16D373917C73224008F16E8 /* Maron.png */,
 				E16D339617C7309F008F16E8 /* CloseSelected.png */,
+				E174D3DE17CE04BE00ECB5B1 /* Hmmer.png */,
+				E174D3DF17CE04BE00ECB5B1 /* KButton.png */,
+				E174D3E017CE04BE00ECB5B1 /* OButton.png */,
+				E174D3DC17CE04B100ECB5B1 /* MButton.png */,
+				E174D3EA17CE19C900ECB5B1 /* mi.png */,
 				E16D33A817C7309F008F16E8 /* iTunesArtwork */,
 				E16D33AA17C7309F008F16E8 /* Info.plist */,
 			);
@@ -2372,10 +2384,7 @@
 				E16D377517C9D7B3008F16E8 /* colk.png in Resources */,
 				E16D377717C9DD3F008F16E8 /* Start.png in Resources */,
 				E16D377917C9DD4B008F16E8 /* ami.png in Resources */,
-				E1DC1EE017CB25BC00D008DE /* B.png in Resources */,
-				E1DC1EE117CB25BC00D008DE /* R.png in Resources */,
 				E1DC1EE217CB25BC00D008DE /* state.png in Resources */,
-				E1DC1EE317CB25BC00D008DE /* Y.png in Resources */,
 				E1DC1EE517CB25E000D008DE /* Box.png in Resources */,
 				E1DC1EE917CB25ED00D008DE /* Forest.png in Resources */,
 				E1DC1EEA17CB25ED00D008DE /* Shop.png in Resources */,
@@ -2399,6 +2408,13 @@
 				E1C81D9F17CCA5E400B2F998 /* setting1.png in Resources */,
 				E1C81DA017CCA5E400B2F998 /* setting2.png in Resources */,
 				E1C81DA117CCA5E400B2F998 /* setting3.png in Resources */,
+				E174D3DD17CE04B100ECB5B1 /* MButton.png in Resources */,
+				E174D3E117CE04BE00ECB5B1 /* Hmmer.png in Resources */,
+				E174D3E217CE04BE00ECB5B1 /* KButton.png in Resources */,
+				E174D3E317CE04BE00ECB5B1 /* OButton.png in Resources */,
+				E174D3E517CE068D00ECB5B1 /* z.png in Resources */,
+				E174D3E917CE0B1200ECB5B1 /* hatena.png in Resources */,
+				E174D3EB17CE19C900ECB5B1 /* mi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2737,6 +2753,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hiroyuki Nakazumi (KBM4WH8VVM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hiroyuki Nakazumi (KBM4WH8VVM)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2756,6 +2774,8 @@
 					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "84F5DDA9-6CF9-433B-ABA2-B86D70B62CE2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84F5DDA9-6CF9-433B-ABA2-B86D70B62CE2";
 				USER_HEADER_SEARCH_PATHS = "\"NeverGiveUpTeam/libs/Chipmunk/include/chipmunk\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2765,6 +2785,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hiroyuki Nakazumi (KBM4WH8VVM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hiroyuki Nakazumi (KBM4WH8VVM)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeverGiveUpTeam/Prefix.pch;
@@ -2783,6 +2805,8 @@
 					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "84F5DDA9-6CF9-433B-ABA2-B86D70B62CE2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "84F5DDA9-6CF9-433B-ABA2-B86D70B62CE2";
 				USER_HEADER_SEARCH_PATHS = "\"NeverGiveUpTeam/libs/Chipmunk/include/chipmunk\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

@@ -10,8 +10,12 @@
 #include "GV.h"
 
 ShopView::ShopView(){
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    if(user->getBoolForKey("BGM_KEY",true)){
+     
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
     SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("shop.mp3");
+    }
 }
 CCScene* ShopView::scene()
 {
@@ -33,7 +37,7 @@ bool ShopView::init()
     
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     CCSprite* back=CCSprite::create("Background.jpeg");
-    back->setPosition(ccp(100.f,100.f));
+    back->setPosition(ccp(size.width/2,size.height/2));
     back->setTag(1);
     this->addChild(back);
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
@@ -41,8 +45,8 @@ bool ShopView::init()
                                                           "CloseSelected.png",
                                                           this,
                                                           menu_selector(ShopView::next) );
-    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
-    
+    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 25, 25) );
+        pCloseItem->setScale(2.0);
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
@@ -51,27 +55,25 @@ bool ShopView::init()
         
     
     
-    CCLabelTTF* label1=CCLabelTTF::create("Shop","arial",20);
-    label1->setPosition(ccp(size.width/4,size.height/4*3));
-    this->addChild(label1);
     
     CCParticleGalaxy* galaxy=CCParticleGalaxy::createWithTotalParticles(1000);
     this->addChild(galaxy);
     
     Buy(700);
       CCSprite* state=CCSprite::create("state.png");//ステータスバー
-    state->setScaleX(size.width/state->getContentSize().width);
-    state->setScaleY(state->getContentSize().height/size.height/10*8);//0.35f
-    state->setPosition(ccp(size.width/2,size.height-(state->getContentSize().height/6)));
+    state->setScaleY(0.7);
+    state->setScaleX(0.9);
+    state->setPosition(ccp(size.width/2,size.height-(state->getContentSize().height/3)));
     this->addChild(state);
 
+
     //ステータスに表示
-    CCLabelTTF* power=CCLabelTTF::create(HelloWorld::getPower().c_str(),"Thonburi",20);
-    CCLabelTTF* stamina=CCLabelTTF::create(HelloWorld::getStamina().c_str(),"Thonburi",20);
-    CCLabelTTF* money=CCLabelTTF::create(HelloWorld::getMoney().c_str(),"Thonburi",20);
+    CCLabelTTF* power=CCLabelTTF::create(HelloWorld::getPower().c_str(),"Thonburi",40);
+    CCLabelTTF* stamina=CCLabelTTF::create(HelloWorld::getStamina().c_str(),"Thonburi",40);
+    CCLabelTTF* money=CCLabelTTF::create(HelloWorld::getMoney().c_str(),"Thonburi",40);
     power->setPosition(ccp(size.width/5*4,size.height/40*39));
     stamina->setPosition(ccp(size.width/5*4,size.height/40*37.5));
-    money->setPosition(ccp(size.width/5*4,size.height/40*36));
+    money->setPosition(ccp(size.width/5*4,size.height/40*36-5));
     ccColor3B sc=power->getColor();
     sc.r=0;
     sc.g=0;
@@ -93,6 +95,7 @@ void ShopView::next(){
     float duration=0.5f;
     CCScene* pScene=CCTransitionFade::create(duration,next);
     if(pScene){
+        SimpleAudioEngine::sharedEngine()->sharedEngine()->stopBackgroundMusic();
         CCDirector::sharedDirector()->replaceScene(pScene);
     }
 }

@@ -19,14 +19,16 @@ public:
     void next();
     void BGM_Off();
     void SE_Off();
+    void VIBE_Off();
+    void VIBE_On();
     void BGM_On();
+    void NET_On();
+    void NET_Off();
     void SE_On();
     void GoToTitle();
     void Exit();
-    void setSetting(bool bgm,bool se);
-    void switchCallBack(CCObject* object);
-    bool getBGM();
-    bool getSE();    
+    void switchCallBack(CCMenuItemImage* object);
+    void News();
     
     CREATE_FUNC(SettingView);
     
