@@ -38,7 +38,7 @@ bool CollectView::init()
                                                           "CloseSelected.png",
                                                           this,
                                                           menu_selector(CollectView::next) );
-    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 25, 25) );
+    pCloseItem->setPosition( ccp(size.width - 25, size.height-25) );
         pCloseItem->setScale(2.0);
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
@@ -71,7 +71,8 @@ bool CollectView::init()
     this->addChild((stamina));
     this->addChild((money));
     //ここまで
-
+    setHatenaK();
+    
     
     
     return true;
@@ -80,40 +81,13 @@ bool CollectView::init()
 void CollectView::setImage(){
     CCSprite* collect[MAX_COLLECT];
     CCSize size=CCDirector::sharedDirector()->getWinSize();
-   /* float x=size.width/8,y=size.height-size.height/5;
-    for(int i=0;i<MAX_COLLECT;i++){
-        collect[i]=CCSprite::create("Melon.png");
-      
-        collect[i]->setPosition(ccp(x,y));
-        collect[i]->setScale(0.25f);
-        this->addChild(collect[i]);
-        
-        string str="No.";
-        ostringstream ostring;//stream 宣言
-        ostring<<(i+1);//iをstreamに代入
-        string num=ostring.str();//int to string
-        str+=num;//連結
-        
-        CCLabelTTF* label=CCLabelTTF::create(str.c_str(),"arial",20);
-        label->setPosition(ccp(x,y-size.height/10));
-        this->addChild(label);
-        
-        if(++x>size.width){
-            x=(size.width/8);
-            y-=(size.height/4);
-        }
-        else{
-            x+=(size.width/4);
-            
-        }*/
-        
-        CCSprite* zukan=CCSprite::create("z.png");
+    CCSprite* zukan=CCSprite::create("z.png");
         zukan->setPosition(ccp(size.width/2,size.height/2-40));
         zukan->setScaleX(1.2);
         zukan->setScaleY(1.8);
-    zukan->setTag(4);
+        zukan->setTag(4);
         
-    CCSprite* y=CCSprite::create("mi.png");
+    CCSprite* y=CCSprite::create("zm.png");
     y->setPosition(ccp(size.width/2,size.height/2-40));
     y->setScaleX(1.2);
     y->setScaleY(1.8);
@@ -135,7 +109,7 @@ void CollectView::setImage(){
                                                      "MButton.png",
                                                      this,
                                                      menu_selector(CollectView::CollectScene) );
-    item2->setPosition(ccp(size.width/5*2+25,30));
+    item2->setPosition(ccp(size.width/2,30));
     item2->setScaleX(2);
     item2->setScaleY(2.2);
     item2->setTag(2);
@@ -144,7 +118,7 @@ void CollectView::setImage(){
                                                      "OButton.png",
                                                      this,
                                                      menu_selector(CollectView::CollectScene) );
-    item3->setPosition(ccp(size.width/4*3,30));
+    item3->setPosition(ccp(size.width/4*3+50,30));
     item3->setScaleX(2);
     item3->setScaleY(2.2);
     item3->setTag(3);
@@ -156,15 +130,6 @@ void CollectView::setImage(){
     this->addChild(Menu, 1);
 
 
-
-        
-        CCSprite* hatena=CCSprite::create("hatena.png");
-        hatena->setPosition(ccp(size.width/8-10,size.height/2-30));
-        hatena->setScaleX(1.1);
-        hatena->setScaleY(1.5);
-        this->addChild(hatena);
-
-    
 }
 
 void CollectView::next(){
@@ -181,23 +146,129 @@ void CollectView::CollectScene(CCMenuItemImage* image){
     int tag=image->getTag();
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     if(tag==1){
+        setHatenaK();
         this->getChildByTag(4)->setVisible(CollectView::set);
         CollectView::set=!(CollectView::set);
         this->getChildByTag(5)->setVisible(CollectView::set2);
                 CollectView::set2=!(CollectView::set2);
+
     }else if(tag==2){
+        SetHatenaM();
         this->getChildByTag(5)->setVisible(CollectView::set2);
         CollectView::set2=!(CollectView::set2);
         this->getChildByTag(4)->setVisible(CollectView::set);
         CollectView::set=!(CollectView::set);
-        
+    }else if(tag==3){
+        CCLog("others");
     }
 }
 
+void CollectView::setHatenaK(){
+    CCSize size= CCDirector::sharedDirector()->getWinSize();
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    for(int i=0;i<8;i++){
+        if(i%2==1){
+            string str="i";
+            ostringstream ostring;//stream 宣言
+            ostring<<(i);//iをstreamに代入
+            str+=ostring.str();
+        if(user->getBoolForKey(str.c_str(),false)){
+    CCSprite* hatena1=CCSprite::create("hatena.png");
+    hatena1->setPosition(ccp(size.width/8*i,690));
+    hatena1->setScaleX(1.1);
+    hatena1->setScaleY(1.5);
+    this->addChild(hatena1);
+            }
+        }
+    }
+
+    for(int i=0;i<8;i++){
+        if(i%2==1){
+            string str="i";
+            ostringstream ostring;//stream 宣言
+            ostring<<(i+4);//iをstreamに代入
+            str+=ostring.str();
+            if(user->getBoolForKey(str.c_str(),false)){
+    CCSprite* hatena2=CCSprite::create("hatena.png");
+    hatena2->setPosition(ccp(size.width/8*i,455));
+    hatena2->setScaleX(1.1);
+    hatena2->setScaleY(1.5);
+    this->addChild(hatena2);
+            }
+    }
+    }
+    for(int i=0;i<8;i++){
+        if(i%2==1){
+            string str="i";
+            ostringstream ostring;//stream 宣言
+            ostring<<(i+8);//iをstreamに代入
+            str+=ostring.str();
+            if(user->getBoolForKey(str.c_str(),false)){
+    CCSprite* hatena3=CCSprite::create("hatena.png");
+    hatena3->setPosition(ccp(size.width/8*i,220));
+    hatena3->setScaleX(1.1);
+    hatena3->setScaleY(1.5);
+    this->addChild(hatena3);
+            }
+    }
+    }
+    
+}
+void CollectView::SetHatenaM(){
+    CCSize size= CCDirector::sharedDirector()->getWinSize();
+    CCUserDefault* user=CCUserDefault::sharedUserDefault();
+    for(int i=0;i<8;i++){
+        if(i%2==1){
+            string str="m";
+            ostringstream ostring;//stream 宣言
+            ostring<<(i);//iをstreamに代入
+            str+=ostring.str();
+            if(user->getBoolForKey(str.c_str(),false)){
+                CCSprite* hatena1=CCSprite::create("hatena.png");
+                hatena1->setPosition(ccp(size.width/8*i,690));
+                hatena1->setScaleX(1.1);
+                hatena1->setScaleY(1.5);
+                this->addChild(hatena1);
+            }
+        }
+    }
+    
+    for(int i=0;i<8;i++){
+        if(i%2==1){
+            string str="m";
+            ostringstream ostring;//stream 宣言
+            ostring<<(i+4);//iをstreamに代入
+            str+=ostring.str();
+            if(user->getBoolForKey(str.c_str(),false)){
+                CCSprite* hatena2=CCSprite::create("hatena.png");
+                hatena2->setPosition(ccp(size.width/8*i,455));
+                hatena2->setScaleX(1.1);
+                hatena2->setScaleY(1.5);
+                this->addChild(hatena2);
+            }
+        }
+    }
+    for(int i=0;i<8;i++){
+        if(i%2==1){
+            string str="m";
+            ostringstream ostring;//stream 宣言
+            ostring<<(i+8);//iをstreamに代入
+            str+=ostring.str();
+            if(user->getBoolForKey(str.c_str(),false)){
+                CCSprite* hatena3=CCSprite::create("hatena.png");
+                hatena3->setPosition(ccp(size.width/8*i,220));
+                hatena3->setScaleX(1.1);
+                hatena3->setScaleY(1.5);
+                this->addChild(hatena3);
+            }
+        }
+    }
+    
+
+}
 void CollectView::menuCloseCallback(CCObject* pSender)
 {
     CCDirector::sharedDirector()->end();
-    
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif

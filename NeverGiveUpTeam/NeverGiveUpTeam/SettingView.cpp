@@ -50,7 +50,7 @@ bool SettingView::init()
     this->addChild(pMenu, 1);
     
     //雪のパーティクル処理
-    CCParticleSnow* snow=CCParticleSnow::createWithTotalParticles(5000);
+    CCParticleSnow* snow=CCParticleSnow::createWithTotalParticles(3000);
     snow->setSkewY(5.0f);
     this->addChild(snow);
     
@@ -253,6 +253,7 @@ void SettingView::GoToTitle(){
     }
 }
 void SettingView::News(){
+    CCMessageBox("Version1.0 リリースしました","バージョン" );
     CCLog("Version1.0 リリースしました");
 }
 

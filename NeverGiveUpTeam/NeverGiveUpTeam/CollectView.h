@@ -18,6 +18,9 @@ public:
     void next();
     void setImage();
     void CollectScene(CCMenuItemImage* image);
+    void setHatenaK();
+    void SetHatenaM();
+    bool CollectLoad(const int no);
     CREATE_FUNC(CollectView);
     bool set,set2;
 };

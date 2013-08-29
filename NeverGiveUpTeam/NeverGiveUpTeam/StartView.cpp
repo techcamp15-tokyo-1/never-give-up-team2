@@ -23,6 +23,15 @@ bool StartView::init()
     CCUserDefault* user=CCUserDefault::sharedUserDefault();
     if(user->getBoolForKey("BGM_KEY",true)){
         SimpleAudioEngine::sharedEngine()->playBackgroundMusic("top.mp3",true);
+        bool first=user->getBoolForKey("FIRST",false);
+        if(first){
+            
+        }else{
+            CCMessageBox("画面遷移は右下または、右上のonマークで切り替わります", "-ガイド-");
+            user->setBoolForKey("FIRST",true);
+            user->flush();
+
+        }
     
     
     }
@@ -175,8 +184,14 @@ void StartView::ccTouchesBegan(CCSet* touches,CCEvent* enevet){
         next(1);
         CCLog("next1");//Box
     }else if(location.x<=size.width/2 && location.y<=size.height/2){
+        CCUserDefault* user=CCUserDefault::sharedUserDefault();
+        int s=user->getIntegerForKey("stamina");
+        if(s>0){
         next(2);
         CCLog("next2");//Mori
+        }else{
+            CCMessageBox("","スタミナがありません！");
+        }
     }else if(location.x>=size.width/2 && location.y>=size.height/2){
         next(3);
         CCLog("next3");//Collect

@@ -21,6 +21,7 @@ public:
     void next();
     void sell(const int Price);
     void setImage();
+    CCScrollView* scroll;
 /*
     virtual void xtTouchesBegan(cocos2d::CCSet* _touches, cocos2d::CCEvent* event);
     virtual void xtTouchesMoved(cocos2d::CCSet* _touches, cocos2d::CCEvent* event);

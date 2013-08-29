@@ -31,33 +31,28 @@ bool BoxView::init()
     
     
     CCSize size=CCDirector::sharedDirector()->getWinSize();
-    CCScrollView* scroll=CCScrollView::create(ccp(size.width,size.height));
+    scroll=CCScrollView::create(ccp(size.width,size.height));
     scroll->setDirection(kCCScrollViewDirectionVertical);
     this->addChild(scroll);
     CCSprite* back=CCSprite::create("Background.jpeg");
     back->setPosition(ccp(size.width/2,size.height/2));
     back->setTag(1);
 //    this->addChild(back);
-    scroll->setContainer(back);
+//    scroll->setContainer(back);
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
                                                           this,
                                                           menu_selector(BoxView::next) );
-    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 25, 25) );
+    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 25, size.height-25) );
         pCloseItem->setScale(2.0);
-    // create menu, it's an autorelease object
+  
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition( CCPointZero );
-    //this->addChild(pMenu, 1);
-    scroll->setContainer(pMenu);
+    this->addChild(pMenu, 1);
+    //scroll->setContainer(pMenu);
     
-    CCLabelTTF* label1=CCLabelTTF::create("Box","arial",20);
-    label1->setPosition(ccp(size.width/4,size.height/4*3));
-    this->addChild(label1);
-    
-    sell(1500);
-       CCSprite* state=CCSprite::create("state.png");//ステータスバー
+    CCSprite* state=CCSprite::create("state.png");//ステータスバー
     state->setScaleY(0.7);
     state->setScaleX(0.9);
     state->setPosition(ccp(size.width/2,size.height-(state->getContentSize().height/3)));
@@ -138,25 +133,35 @@ void BoxView::sell(const int Price){
 
 void BoxView::setImage(){
     CCSprite* collect[MAX_COLLECT];
+    CCUserDefault* user =CCUserDefault::sharedUserDefault();
     CCSize size=CCDirector::sharedDirector()->getWinSize();
     float x=size.width/8,y=size.height-size.height/5;
     for(int i=0;i<MAX_COLLECT;i++){
-        collect[i]=CCSprite::create("Peach.png");
+        ostringstream oss;
+        string str="";
+        oss<<(i+1);
+        str+=oss.str();
+        str+=".png";
+        collect[i]=CCSprite::create(str.c_str());
         
         collect[i]->setPosition(ccp(x,y));
         collect[i]->setScale(0.5f);
+
+        //  scroll->setContainer(collect[i]);
         this->addChild(collect[i]);
-        
-        string str="Item";
+        string str2="";
         ostringstream ostring;//stream 宣言
-        ostring<<(i+1);//iをstreamに代入
+        ostring<<(i+1);
+        str2+=ostring.str();
+        ostring<<(user->getIntegerForKey(str2.c_str(),0));//iをstreamに代入
         string num=ostring.str();//int to string
         str+=num;//連結
         
-        CCLabelTTF* label=CCLabelTTF::create(str.c_str(),"arial",20);
-        label->setPosition(ccp(x,y-size.height/10));
+        CCLabelTTF* label=CCLabelTTF::create(num.c_str(),"arial",20);
+        label->setPosition(ccp(x,y-35));
         this->addChild(label);
         
+
         if(++x>size.width){
             x=(size.width/8);
             y-=(size.height/4);
@@ -165,56 +170,7 @@ void BoxView::setImage(){
             x+=(size.width/4);
             
         }
-        
-        
     }
 }
 
 
-
-/*
-void BoxView::xtTouchesBegan(cocos2d::CCSet* _touches, cocos2d::CCEvent* event)
-{
-    CCLog("xtTouchesBegan");
-}
-
-void BoxView::xtTouchesMoved(cocos2d::CCSet* _touches, cocos2d::CCEvent* event)
-{
-    CCLog("xtTouchesMoved");
-}
-
-void BoxView::xtTouchesEnded(cocos2d::CCSet* _touches, cocos2d::CCEvent* event)
-{
-    CCLog("xtTouchesEnded");
-}
-
-void BoxView::xtTouchesBegan(CCPoint position)
-{
-    CCLog("xtTouchesBegan x: %f, y: %f", position.x, position.y);
-}
-
-void BoxView::xtTouchesMoved(CCPoint position)
-{
-    CCLog("xtTouchesMoved x: %f, y: %f", position.x, position.y);
-}
-
-void BoxView::xtTouchesEnded(CCPoint position)
-{
-    CCLog("xtTouchesEnded x: %f, y: %f", position.x, position.y);
-}
-
-void BoxView::xtTapGesture(CCPoint position)
-{
-    CCLog("xtTapGesture x: %f, y: %f", position.x, position.y);
-}
-
-void BoxView::xtDoubleTapGesture(CCPoint position)
-{
-    CCLog("xtDoubleTapGesture x: %f, y: %f", position.x, position.y);
-}
-
-void BoxView::xtLongTapGesture(CCPoint position)
-{
-    CCLog("xtLongTapGesture x: %f, y: %f", position.x, position.y);
-}
-*/

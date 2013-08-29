@@ -18,9 +18,10 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void next();
-    bool Buy(const int Price,const string str);
+    bool Buy(CCMenuItemImage* image);
     bool Buy_Cancel();
     void Save(const int money);
+    void SetMarchandice();
     
     
     CREATE_FUNC(ShopView);

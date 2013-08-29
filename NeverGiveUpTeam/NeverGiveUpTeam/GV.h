@@ -26,6 +26,10 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
 
 
 //名前空間指定マクロ
@@ -40,7 +44,7 @@ using namespace CocosDenshion;
 #define WidthSize 320
 #define HeightSize 480
 #define MAX_BOX_NUM 30
-#define MAX_COLLECT 30
+#define MAX_COLLECT 23
 #define BOX_NUM 5
 #define MAX_MONEY 999999
 #define MAX_POWER 999

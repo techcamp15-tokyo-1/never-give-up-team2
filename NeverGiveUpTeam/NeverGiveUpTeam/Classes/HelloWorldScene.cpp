@@ -32,14 +32,22 @@ void HelloWorld::setStatus(){
         user->setIntegerForKey("money",0);
     }
     
-    user->setIntegerForKey("stamina",100);
-    user->setIntegerForKey("money",10000);
     
-    
-    CCLog("p=%d,s=%d,m=%d",power,stamina,money);
+    bool second=user->getBoolForKey("SECOND",false);
+    if(second){
+        
+    }else{
+        user->setIntegerForKey("stamina",100);
+        user->setIntegerForKey("money",10000);
+        user->setIntegerForKey("power",100);
+        user->setBoolForKey("SECOND",true);
+        user->flush();
+    }
+     //user->setIntegerForKey("money",100000);
     
     user->flush();
 
+    
     
 #endif
 }
@@ -53,8 +61,7 @@ bool HelloWorld::init()
     for(int i=0;i<10;i++){
     setStatus();
     }
-    CCMessageBox("test", "です");
-   
+    
     this->setTouchMode(kCCTouchesAllAtOnce);
     this->setTouchEnabled(true);
     
